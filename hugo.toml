@@ -1,0 +1,81 @@
+baseurl = "https://example.com"
+defaultContentLanguage = "zh"
+languageCode = "zh-Hans"
+title = "xiestr's blog"
+theme = "dream"
+hasCJKLanguage = true
+
+# [services]
+# [services.disqus]
+# shortname = ""
+# [services.googleAnalytics]
+# ID = ""
+
+[params]
+# zenMode = true
+
+lightTheme = "emerald"
+darkTheme = "business"
+
+# backgroundImage = "img/global-background.jpg"
+# backgroundImageDark = ""
+
+author = "xiestr"
+description = "小谢的时光记录~"
+avatar = "img/avatar.jpg"
+headerTitle = "xiestr"
+# 座右铭
+# motto = ""
+
+# footerBottomText = ""
+
+rss = true
+
+# utterancesRepo = ""
+
+# valine = true
+# LEANCLOUD_APP_ID = ""
+# LEANCLOUD_APP_KEY = ""
+
+# waline = true
+# walineServer = ""
+
+email = "kilzo_zh@outlook.com"
+
+siteStartYear = 2025
+
+favicon = "favicon.jpg"
+
+# Syntax highlighting
+customSyntaxHighlighting = false
+
+[markup]
+[markup.highlight]
+noClasses = false
+
+# options
+stickyNav = true
+reorderNavItems = ["search", "rss", "posts", "categories", "tags"]
+# collapseNavItems = ["posts", "categories", "tags"]
+# noDefaultSummaryCover = true
+# showTableOfContents = true
+# showSummaryCoverInPost = true
+imageZoomableInPost = true
+showPrevNextPost = true
+# reorderShares = ["x", "facebook", "whatsapp"]
+
+# [params.navItems]
+
+# [params.twikoo]
+# enabled = true
+# envID = ""
+# region = ""
+# lang = ""
+
+# [params.advanced]
+# customCSS = ["css/custom.css"]
+# customJS = []
+
+[params.experimental]
+# jsDate = true
+# jsDateFormat = "yyyy年MM月dd日"
