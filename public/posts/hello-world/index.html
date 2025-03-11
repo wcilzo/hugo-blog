@@ -6,7 +6,7 @@
   <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World | xiestr&#39;s blog</title>
+    <title>MySQL索引(Innodb) | xiestr&#39;s blog</title>
 
     
   
@@ -19,11 +19,15 @@
 
 
 <meta name="author" content="xiestr" />
-<meta name="description" content="Cut out summary from your post content here.
+<meta name="description" content="千万级数据表如何用B&#43;树索引快速查找?
+使用基于B&#43;树的索引进行查找。
+索引 索引是一种数据结构。
+索引是帮助MySQL高效获取数据的排好序的数据结构
+为什么需要引入索引这种数据结构？ 在计算机中，磁盘文件存储是随机存储的，而不是顺序存储。当需要查询某特定数据时，如果是随机存储，那么就得全盘扫描找到这个文件。这花费的时间是巨大的。因此MySQL引入了索引这种数据结构。
 " />
 
 
-<meta name="keywords" content="Tag1,Tag2">
+<meta name="keywords" content="MySQL">
 
 
 
@@ -32,24 +36,29 @@
 
 <meta property="og:url" content="http://localhost:1313/posts/hello-world/">
   <meta property="og:site_name" content="xiestr&#39;s blog">
-  <meta property="og:title" content="Hello World">
-  <meta property="og:description" content="Cut out summary from your post content here.">
+  <meta property="og:title" content="MySQL索引(Innodb)">
+  <meta property="og:description" content="千万级数据表如何用B&#43;树索引快速查找?
+使用基于B&#43;树的索引进行查找。
+索引 索引是一种数据结构。
+索引是帮助MySQL高效获取数据的排好序的数据结构
+为什么需要引入索引这种数据结构？ 在计算机中，磁盘文件存储是随机存储的，而不是顺序存储。当需要查询某特定数据时，如果是随机存储，那么就得全盘扫描找到这个文件。这花费的时间是巨大的。因此MySQL引入了索引这种数据结构。">
   <meta property="og:locale" content="zh_Hans">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2025-03-03T21:49:34+08:00">
     <meta property="article:modified_time" content="2025-03-03T21:49:34+08:00">
-    <meta property="article:tag" content="Tag1">
-    <meta property="article:tag" content="Tag2">
-    <meta property="og:image" content="http://localhost:1313/img/avatar.jpg">
+    <meta property="article:tag" content="MySQL">
 
 
 
 
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="http://localhost:1313/img/avatar.jpg">
-  <meta name="twitter:title" content="Hello World">
-  <meta name="twitter:description" content="Cut out summary from your post content here.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="MySQL索引(Innodb)">
+  <meta name="twitter:description" content="千万级数据表如何用B&#43;树索引快速查找?
+使用基于B&#43;树的索引进行查找。
+索引 索引是一种数据结构。
+索引是帮助MySQL高效获取数据的排好序的数据结构
+为什么需要引入索引这种数据结构？ 在计算机中，磁盘文件存储是随机存储的，而不是顺序存储。当需要查询某特定数据时，如果是随机存储，那么就得全盘扫描找到这个文件。这花费的时间是巨大的。因此MySQL引入了索引这种数据结构。">
 
 
 
@@ -258,22 +267,25 @@
   <div class="lg:col-span-2">
     <article class="mx-auto prose prose-quoteless dark:prose-invert" id="dream-single-post-main" itemscope itemtype="http://schema.org/Article">
       
-  <meta itemprop="name" content="Hello World">
-  <meta itemprop="description" content="Cut out summary from your post content here.">
+  <meta itemprop="name" content="MySQL索引(Innodb)">
+  <meta itemprop="description" content="千万级数据表如何用B&#43;树索引快速查找?
+使用基于B&#43;树的索引进行查找。
+索引 索引是一种数据结构。
+索引是帮助MySQL高效获取数据的排好序的数据结构
+为什么需要引入索引这种数据结构？ 在计算机中，磁盘文件存储是随机存储的，而不是顺序存储。当需要查询某特定数据时，如果是随机存储，那么就得全盘扫描找到这个文件。这花费的时间是巨大的。因此MySQL引入了索引这种数据结构。">
   <meta itemprop="datePublished" content="2025-03-03T21:49:34+08:00">
   <meta itemprop="dateModified" content="2025-03-03T21:49:34+08:00">
-  <meta itemprop="wordCount" content="14">
-  <meta itemprop="image" content="http://localhost:1313/img/avatar.jpg">
-  <meta itemprop="keywords" content="Tag1,Tag2">
+  <meta itemprop="wordCount" content="2714">
+  <meta itemprop="keywords" content="MySQL">
 
       <header>
-        <h1 itemprop="headline">Hello World</h1>
+        <h1 itemprop="headline">MySQL索引(Innodb)</h1>
         <p class="text-sm">
           
             星期一, 3月 3, 2025
           
 
-          | <span>1分钟阅读</span>
+          | <span>6分钟阅读</span>
 
           
           | <span>更新于
@@ -316,7 +328,7 @@
   
   
     <a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary"
-      href="https://x.com/intent/post?text=Hello%20World&amp;url=http://localhost:1313/posts/hello-world/" target="_blank" rel="noopener noreferrer"
+      href="https://x.com/intent/post?text=MySQL%e7%b4%a2%e5%bc%95%28Innodb%29&amp;url=http://localhost:1313/posts/hello-world/" target="_blank" rel="noopener noreferrer"
       title="Share on X">
       <ion-icon class="group-hover:text-primary-content" name="logo-x"></ion-icon>
     </a>
@@ -328,7 +340,7 @@
     </a>
   
     <a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary"
-      href="https://wa.me/?text=Hello%20World%20http://localhost:1313/posts/hello-world/" target="_blank" rel="noopener noreferrer"
+      href="https://wa.me/?text=MySQL%e7%b4%a2%e5%bc%95%28Innodb%29%20http://localhost:1313/posts/hello-world/" target="_blank" rel="noopener noreferrer"
       title="Share on WhatsApp">
       <ion-icon class="group-hover:text-primary-content" name="logo-whatsapp"></ion-icon>
     </a>
@@ -344,8 +356,135 @@
       <section id="dream-single-post-content" itemprop="articleBody">
         
 
-        <p>Cut out summary from your post content here.</p>
-<p>The remaining content of your post.</p>
+        <p>千万级数据表如何用B+树索引快速查找?</p>
+<p>使用基于B+树的索引进行查找。</p>
+<h2 id="索引">索引</h2>
+<p>索引是一种<code>数据结构</code>。</p>
+
+
+
+  <blockquote>
+    <p>索引是帮助MySQL高效获取数据的<code>排好序</code>的<code>数据结构</code></p>
+  </blockquote>
+
+<h3 id="为什么需要引入索引这种数据结构">为什么需要引入索引这种数据结构？</h3>
+<p>在计算机中，磁盘文件存储是随机存储的，而不是顺序存储。当需要查询某特定数据时，如果是随机存储，那么就得全盘扫描找到这个文件。这花费的时间是巨大的。因此MySQL引入了索引这种数据结构。</p>
+<hr>
+<p><code>MySQL的行为大部分都可以用从索引的角度进行解释。</code></p>
+<p>索引的数据结构有如下几种：</p>
+<ul>
+<li>二叉树</li>
+<li>红黑树</li>
+<li>哈希表</li>
+<li>B-Tree</li>
+</ul>
+<p>上文提到：索引是一种<code>有序</code>的数据结构。</p>
+<p>MySQL中数据库表中通过主键对数据进行排序。(大概是这个意思)</p>
+<h3 id="为什么使用b树作为索引">为什么使用B+树作为索引？</h3>
+
+
+
+  <blockquote>
+    <p>实际上就是为了树的高度尽可能的低，所以选择了B+树作为索引的数据结构。</p>
+  </blockquote>
+
+<p>从数据结构选择出发：</p>
+<p>1、二叉树：</p>
+<p>当数据按大小顺序插入时，二叉树会形成一条长链。导致树的高度特别大。如果要查询某一个数据，需要从树的根节点遍历整棵树。这与随机存储的全表扫描没有区别。</p>
+<p><img src="/articleImage/image-%E4%BA%8C%E5%8F%89%E6%A0%91%E9%95%BF%E9%93%BE.png" alt="image-二叉树长链"></p>
+<p>2、红黑树:</p>
+<p>红黑树是一棵二叉平衡树，虽然不会像二叉树一样在顺序插入时形成一条长链。但是在某些情况下树依然很高。当数据量大的情况下，红黑树可能高度特别大。如果需要查询叶子节点的数据，可能有几十层的数据需要比对。</p>
+<p><img src="/articleImage/image-%E7%BA%A2%E9%BB%91%E6%A0%91%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8.png" alt="image-红黑树顺序存储"></p>
+<p>3、B树</p>
+<p>为了进一步缩小树的高度。可以将树的每一层节点开辟一个空间，这个空间存储多个数据。只要每个节点开辟的空间能够存储的数据越多，那么树的高度就能尽可能的缩小。这就是B树。但是B树也是KV结构。</p>
+<p>•叶节点具有相同的深度，叶节点的指针为空</p>
+<p>•所有索引元素不重复</p>
+<p>•节点中的数据索引从左到右递增排列</p>
+<p><img src="/articleImage/image-MySQLB%E6%A0%91.png" alt="image-MySQLB树"></p>
+<p>4、B+树</p>
+<p>拥有B树的优点</p>
+<p>叶子节点拥有所有索引元素，和存储地址。其他节点均为冗余节点。</p>
+<p>叶子节点用指针相连，首尾相连。方便范围查找。提高查询性能。</p>
+<p>每一个节点代表一个数据页，MySQL数据页大小默认为16KB(<code>16384</code>)。查询时先将节点load到内存，通过高效的搜索算法查询节点位置，最后匹配到相关的叶子节点。在内存中查找节点的花费时间可以忽略不计，时间主要耗费在将节点数据页load在内存当中，因此，树的层数越小，花费时间越短。</p>
+<p><img src="/articleImage/image-B+%E6%A0%91.png" alt="image-B+树"></p>
+<h4 id="b树结构可以存储多大的空间呢">B+树结构可以存储多大的空间呢？</h4>
+<p>假设使用BigInt作为主键。假设有<code>3</code>层存储结构，最底层为叶子节点。</p>
+<p>非叶子节点中：一条记录的主键占用空间是8B，相邻的空白部分存储下一个节点的磁盘文件地址，MySQL中大概是6B，那么一个就是14B。16KB一叶能够存储(<code>16384 / 16 ≈ 1170</code>). 1170条数据</p>
+<p>叶子节点中，data可能存储的是一整行数据，最多是1kb。那么每个叶子节点就有16条数据。</p>
+<p>一共 <code>1170 x 1170 x 16 ≈ 2190w</code>的数据。</p>
+<hr>
+<p>Hash 结构</p>
+<p>与我们通常认识的HASH哈希表一样。存在哈希冲突问题。同时不方便范围查询。只能查询一些 <code>=</code> 或者<code>in</code>情况下的内容。有时候能比B+树更高效。</p>
+<h3 id="mysql数据库表的存储形式">MySQL数据库表的存储形式</h3>
+<p>在了解索引是什么之后，下一步了解MySQL数据库表在机器上是如何存储的。</p>
+
+
+
+  <blockquote>
+    <p>MySQL存储引擎生效于<code>数据库表</code>。每一个数据库表都可以单独设置存储引擎。</p>
+  </blockquote>
+
+<p>MySQL数据库表存储根据不同的索引引擎有着不同的存储形式。MySQL存储引擎目前主要有Innodb、MyISAM两种。</p>
+
+
+
+  <blockquote>
+    <p>实际上还有一些别的存储引擎。有关存储引擎的分类请自行查询。</p>
+  </blockquote>
+
+<p>1、在Innodb存储引擎<code>(后续Innodb皆为Innodb存储引擎)</code>中</p>
+
+
+
+  <blockquote>
+    <p>聚集索引</p>
+  </blockquote>
+
+<p>数据库表在机器上存储是通过两个文件存储的:</p>
+<p>.ibd文件和.frm文件。</p>
+<p>.frm文件存储表结构，.ibd文件存储数据和索引。对比MyISAM优势在于<code>数据和索引存储在一起</code>，不需要将数据文件load到内存中查询。节省时间。在叶子节点中，直接存储当前数据行的所有信息。</p>
+<p>.ibd文件实际上存储的就是一颗B+树。</p>
+<p>2、在MyISAM存储引擎中</p>
+
+
+
+  <blockquote>
+    <p>非聚集索引</p>
+  </blockquote>
+
+<p>数据库表通过三个文件存储:</p>
+<p>.frm文件、.MYD文件、.MYI文件。</p>
+<p>.frm文件存储表结构。.MYD存储数据。.MYI存储索引。</p>
+<p>如果要查询一条数据，首<code>先查MYI文件</code>，MYI文件的数据构建成一颗B+树，找到对应叶子节点的数据后
+磁盘存储地址，<code>再查找MYD文件</code>查找对应的数据。</p>
+<hr>
+<h3 id="聚集索引聚簇索引稀疏索引到底是什么">聚集索引&amp;聚簇索引&amp;稀疏索引到底是什么?</h3>
+<p>聚集索引: 在索引的叶子节点中，存储了所有其他列的数据。</p>
+<p>非聚集索引：索引和数据分开存储的叫做非聚集索引。</p>
+<p>稀疏索引也是一种非聚集索引。</p>
+<h3 id="为什么dba总推荐使用自增主键做索引">为什么DBA总推荐使用自增主键做索引?</h3>
+<p>Innodb 存储引擎在存储数据库表的时候通过.ibd文件存储。.ibd文件存储的是一颗B+树，而B+树需要默认通过主键进行组织。如果没有主键、那么他会从头开始遍历每一列，找到一个列的每个值是唯一的用于组织B+树。如果不存在这样的列，那么MySQL会创建一个隐藏的列，列的值类似为rowId用于组织B+树。如果创建了主键就不需要MySQL去处理索引。</p>
+<p>为什么是自增的呢？
+前文提到过：MySQL是一种<code>排好序</code>的数据结构。在查找元素时，自增主键比较大小肯定是比UUID这种字符串比较大小要快的。
+如果是非自增主键，B+树在每次插入的时候可能会改变树结构。影响查询后续的查询性能。比如说一租节点&quot;1,2,3,4,5,6&quot;中，插入一个&quot;8&quot;再插入一个&quot;7&quot;。</p>
+<p><img src="/articleImage/image-B+%E6%A0%91%E5%8E%9F.png" alt="image-B+树原"></p>
+<p>这里degree最大为4。B+树的节点中第一个值是上级节点中的代表。这里如果加入8。变为</p>
+<p><img src="/articleImage/image-B+%E6%A0%91%E6%8F%92%E5%85%A58.png" alt="image-B+树插入8"></p>
+<p>看起来没什么影响，但是如果插入再加入7。</p>
+<p><img src="/articleImage/B+%E6%A0%91%E6%8F%92%E5%85%A57.gif" alt="image-B+树插入7"></p>
+<p>可以看到树结构很明显被改变了。8从根节点下降，7插队在8的前面，同时跟节点修改为7。</p>
+<p>如果是自增的，就不会出现这种问题。每次都是顺序插入。非自增的情况下，当数据量非常大，索引结构改变后，重构索引时间可能会非常长，影响值加入效率。</p>
+<h3 id="联合索引底层数据结构是怎样的">联合索引底层数据结构是怎样的?</h3>
+<p>多个字段共同组织成一个索引。一个表中创建2-3个联合索引合适。</p>
+<p>联合索引会根据索引的先后顺序进行排序。比如说存在一个<code>(name,age,position)</code>联合索引。现根据name进行排序，在name相等的前提下排序age，在name、age都相等的情况下排序position。整个结构看起来是<code>整体无序，局部有序</code>的。</p>
+<p><img src="/articleImage/image-%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%951.png" alt="image-联合索引1"></p>
+<h3 id="mysql最左前缀优化原则">MySQL最左前缀优化原则?</h3>
+<p>对于(name,age,position)联合索引</p>
+<p>联合索引是按照索引的先后进行排序的，当需要使用目标索引position，但是目标索引position之前的索引name、age均没有被使用的时候。联合索引就会失效。同理，当需要使用目标索引age，但是目标索引age之前的索引name没有使用，联合索引也会失效。充分体现了索引的<code>排序</code>特点。</p>
+<p>比如图中的age,如果需要查询<code>select * from table where age = 23</code>
+这条SQL进行全表扫描。因为age在索引中不是有序的。</p>
+<p><img src="/articleImage/image-%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%951.png" alt="image-联合索引1"></p>
+
 
         
       </section>

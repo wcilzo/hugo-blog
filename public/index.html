@@ -234,13 +234,17 @@
   
   <figure>
     
-    <img src="/img/avatar.jpg" alt="Hello World" />
+    
+    <picture>
+      <source srcset="/images/default1_hu_33478ca164b4fce4.webp" type="image/webp" />
+      <img src="/images/default1.jpg" alt="/images/default1.jpg" />
+    </picture>
     
   </figure>
   
 
   <div class="card-body">
-    <h2 class="card-title">Hello World</h2>
+    <h2 class="card-title">MySQL索引(Innodb)</h2>
 
     <p class="date text-base-content/60">
     
@@ -248,7 +252,19 @@
     
     </p>
 
-    <p>Cut out summary from your post content here.</p>
+    <p>千万级数据表如何用B+树索引快速查找?</p>
+<p>使用基于B+树的索引进行查找。</p>
+<h2 id="索引">索引</h2>
+<p>索引是一种<code>数据结构</code>。</p>
+
+
+
+  <blockquote>
+    <p>索引是帮助MySQL高效获取数据的<code>排好序</code>的<code>数据结构</code></p>
+  </blockquote>
+
+<h3 id="为什么需要引入索引这种数据结构">为什么需要引入索引这种数据结构？</h3>
+<p>在计算机中，磁盘文件存储是随机存储的，而不是顺序存储。当需要查询某特定数据时，如果是随机存储，那么就得全盘扫描找到这个文件。这花费的时间是巨大的。因此MySQL引入了索引这种数据结构。</p>
 
     
     <div class="card-actions justify-between items-center mt-4">
@@ -275,7 +291,7 @@
 
       <div class="flex items-center">
         <ion-icon name="time" class="mr-1"></ion-icon>
-        <span>1分钟阅读</span>
+        <span>6分钟阅读</span>
       </div>
     </div>
   </div>
