@@ -13,7 +13,7 @@ categories:
 tags:
   - MySQL
 # nolastmod: true
-draft: true
+draft: false
 ---
 
 千万级数据表如何用B+树索引快速查找?
