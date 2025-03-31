@@ -1016,7 +1016,7 @@
       max-width: 80rem;
     }
     @media (width >= 96rem) {
-      max-width: 96rem;
+      max-width: 132rem;
     }
   }
   .divider {
@@ -1075,7 +1075,7 @@
   }
   .prose {
     color: var(--tw-prose-body);
-    max-width: 65ch;
+    max-width: 85ch;
     :where(p):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
       margin-top: 1.25em;
       margin-bottom: 1.25em;
@@ -2122,7 +2122,7 @@
   }
   .lg\:mt-8 {
     @media (width >= 64rem) {
-      margin-top: calc(var(--spacing) * 8);
+      /* margin-top: calc(var(--spacing) * 8); */
     }
   }
   .lg\:mt-12 {
@@ -2157,7 +2157,7 @@
   }
   .lg\:grid-cols-4 {
     @media (width >= 64rem) {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(200px, minmax(0, 1fr));
     }
   }
   .lg\:flex-col {
