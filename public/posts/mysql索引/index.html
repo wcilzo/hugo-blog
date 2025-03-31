@@ -71,10 +71,17 @@
     
 
 
+<link rel="stylesheet" data-custom-syntax-highlighting />
 <style>
-  pre {
+  .chroma {
     padding: 1em;
+    background-color: var(--dream-pre-bg, #f5f5f5);
+    border-radius: .5em;
     overflow: auto;
+  }
+
+  html.dark .chroma {
+    background-color: var(--dream-pre-bg-dark, #262626);
   }
 </style>
 
@@ -568,8 +575,10 @@
         <div class="card-title">Me</div>
 
         <div class="prose dark:prose-invert">
-          <p>Hi, my name is .</p>
-<p>This is my blog.</p>
+          <p>你好，这里是XieStr.</p>
+<p>有问题欢迎联系</p>
+<p>这是我的邮箱：kilzo_<a href="mailto:zh@outlook.com" target="_blank">zh@outlook.com</a>
+</p>
 
         </div>
       </div>
@@ -662,6 +671,21 @@
 
 
 
+<script>
+  window.customSyntaxHighlighting = {
+    light: "/css/syntax-light.min.css",
+    dark: "/css/syntax-dark.min.css"
+  }
+
+  document.addEventListener('alpine:initialized', () => {
+    var isDark = Alpine.store('darkMode').isDark()
+    var customSyntaxHighlightingUrl = isDark ? window.customSyntaxHighlighting.dark : window.customSyntaxHighlighting.light
+
+    document
+      .querySelector('link[data-custom-syntax-highlighting]')
+      .setAttribute('href', customSyntaxHighlightingUrl)
+  })
+</script>
 
 
 
@@ -676,7 +700,7 @@
 
     
 
-    <script type="module" src="https://unpkg.com/ionicons@7.4.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.4.0/dist/ionicons/ionicons.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.5.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.5.0/dist/ionicons/ionicons.js"></script>
   </body>
 </html>

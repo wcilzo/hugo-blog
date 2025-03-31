@@ -47,11 +47,14 @@ siteStartYear = 2025
 favicon = "favicon.jpg"
 
 # Syntax highlighting
-customSyntaxHighlighting = false
+customSyntaxHighlighting = true
 
 [markup]
 [markup.highlight]
-noClasses = false
+  anchorLineNos = true
+  guessSyntax = true
+  codeFences = true
+  noClasses = false
 
 # options
 stickyNav = true
