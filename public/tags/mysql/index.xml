@@ -2,24 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>MySQL on xiestr&#39;s blog</title>
-    <link>http://localhost:1313/tags/mysql/</link>
+    <link>https://example.com/tags/mysql/</link>
     <description>Recent content in MySQL on xiestr&#39;s blog</description>
     <generator>Hugo</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Tue, 11 Mar 2025 20:00:52 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>MySQL的Explain和索引优化学习笔记</title>
-      <link>http://localhost:1313/posts/mysql%E7%9A%84explain%E5%92%8C%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96/</link>
-      <pubDate>Tue, 11 Mar 2025 20:00:52 +0800</pubDate>
-      <guid>http://localhost:1313/posts/mysql%E7%9A%84explain%E5%92%8C%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96/</guid>
-      <description>&lt;h3 id=&#34;explain-工具&#34;&gt;Explain 工具&lt;/h3&gt;&#xA;&lt;p&gt;使用&lt;code&gt;explain&lt;/code&gt; 或者 &lt;code&gt;EXPLAIN&lt;/code&gt;关键字可以模拟优化器执行SQL语句。分析语句或者是结构的性能瓶颈。Explain分析并不会真的运行这一条语句，而是返回这条SQL语句的相关信息。包括索引、表、访问类型等。&lt;/p&gt;</description>
-    </item>
+    <lastBuildDate>Mon, 03 Mar 2025 21:49:34 +0800</lastBuildDate>
+    <atom:link href="https://example.com/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>MySQL索引(Innodb)</title>
-      <link>http://localhost:1313/posts/mysql%E7%B4%A2%E5%BC%95/</link>
+      <link>https://example.com/posts/mysql%E7%B4%A2%E5%BC%95/</link>
       <pubDate>Mon, 03 Mar 2025 21:49:34 +0800</pubDate>
-      <guid>http://localhost:1313/posts/mysql%E7%B4%A2%E5%BC%95/</guid>
+      <guid>https://example.com/posts/mysql%E7%B4%A2%E5%BC%95/</guid>
       <description>&lt;p&gt;千万级数据表如何用B+树索引快速查找?&lt;/p&gt;&#xA;&lt;p&gt;使用基于B+树的索引进行查找。&lt;/p&gt;&#xA;&lt;h2 id=&#34;索引&#34;&gt;索引&lt;/h2&gt;&#xA;&lt;p&gt;索引是一种&lt;code&gt;数据结构&lt;/code&gt;。&lt;/p&gt;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;  &lt;blockquote&gt;&#xD;&#xA;    &lt;p&gt;索引是帮助MySQL高效获取数据的&lt;code&gt;排好序&lt;/code&gt;的&lt;code&gt;数据结构&lt;/code&gt;&lt;/p&gt;&#xD;&#xA;  &lt;/blockquote&gt;&#xD;&#xA;&#xD;&#xA;&lt;h3 id=&#34;为什么需要引入索引这种数据结构&#34;&gt;为什么需要引入索引这种数据结构？&lt;/h3&gt;&#xA;&lt;p&gt;在计算机中，磁盘文件存储是随机存储的，而不是顺序存储。当需要查询某特定数据时，如果是随机存储，那么就得全盘扫描找到这个文件。这花费的时间是巨大的。因此MySQL引入了索引这种数据结构。&lt;/p&gt;</description>
     </item>
   </channel>
