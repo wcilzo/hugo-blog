@@ -315,7 +315,7 @@
   
   <div class="avatar mr-1">
     <div class="w-8 rounded-full">
-      <img class="my-0!" src="/img/avatar.jpg" alt="xiestr" />
+      <img class="my-0!" src="../../img/avatar.jpg" alt="xiestr" />
     </div>
   </div>
   
@@ -404,22 +404,22 @@
 <p>从数据结构选择出发：</p>
 <p>1、二叉树：</p>
 <p>当数据按大小顺序插入时，二叉树会形成一条长链。导致树的高度特别大。如果要查询某一个数据，需要从树的根节点遍历整棵树。这与随机存储的全表扫描没有区别。</p>
-<p><img src="/articleImage/image-%E4%BA%8C%E5%8F%89%E6%A0%91%E9%95%BF%E9%93%BE.png" alt="image-二叉树长链"></p>
+<p><img src="../../articleImage/image-%E4%BA%8C%E5%8F%89%E6%A0%91%E9%95%BF%E9%93%BE.png" alt="image-二叉树长链"></p>
 <p>2、红黑树:</p>
 <p>红黑树是一棵二叉平衡树，虽然不会像二叉树一样在顺序插入时形成一条长链。但是在某些情况下树依然很高。当数据量大的情况下，红黑树可能高度特别大。如果需要查询叶子节点的数据，可能有几十层的数据需要比对。</p>
-<p><img src="/articleImage/image-%E7%BA%A2%E9%BB%91%E6%A0%91%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8.png" alt="image-红黑树顺序存储"></p>
+<p><img src="../../articleImage/image-%E7%BA%A2%E9%BB%91%E6%A0%91%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8.png" alt="image-红黑树顺序存储"></p>
 <p>3、B树</p>
 <p>为了进一步缩小树的高度。可以将树的每一层节点开辟一个空间，这个空间存储多个数据。只要每个节点开辟的空间能够存储的数据越多，那么树的高度就能尽可能的缩小。这就是B树。但是B树也是KV结构。</p>
 <p>•叶节点具有相同的深度，叶节点的指针为空</p>
 <p>•所有索引元素不重复</p>
 <p>•节点中的数据索引从左到右递增排列</p>
-<p><img src="/articleImage/image-MySQLB%E6%A0%91.png" alt="image-MySQLB树"></p>
+<p><img src="../../articleImage/image-MySQLB%E6%A0%91.png" alt="image-MySQLB树"></p>
 <p>4、B+树</p>
 <p>拥有B树的优点</p>
 <p>叶子节点拥有所有索引元素，和存储地址。其他节点均为冗余节点。</p>
 <p>叶子节点用指针相连，首尾相连。方便范围查找。提高查询性能。</p>
 <p>每一个节点代表一个数据页，MySQL数据页大小默认为16KB(<code>16384</code>)。查询时先将节点load到内存，通过高效的搜索算法查询节点位置，最后匹配到相关的叶子节点。在内存中查找节点的花费时间可以忽略不计，时间主要耗费在将节点数据页load在内存当中，因此，树的层数越小，花费时间越短。</p>
-<p><img src="/articleImage/image-B+%E6%A0%91.png" alt="image-B+树"></p>
+<p><img src="../../articleImage/image-B+%E6%A0%91.png" alt="image-B+树"></p>
 <h4 id="b树结构可以存储多大的空间呢">B+树结构可以存储多大的空间呢？</h4>
 <p>假设使用BigInt作为主键。假设有<code>3</code>层存储结构，最底层为叶子节点。</p>
 <p>非叶子节点中：一条记录的主键占用空间是8B，相邻的空白部分存储下一个节点的磁盘文件地址，MySQL中大概是6B，那么一个就是14B。16KB一叶能够存储(<code>16384 / 16 ≈ 1170</code>). 1170条数据</p>
@@ -480,23 +480,23 @@
 <p>为什么是自增的呢？
 前文提到过：MySQL是一种<code>排好序</code>的数据结构。在查找元素时，自增主键比较大小肯定是比UUID这种字符串比较大小要快的。
 如果是非自增主键，B+树在每次插入的时候可能会改变树结构。影响查询后续的查询性能。比如说一租节点&quot;1,2,3,4,5,6&quot;中，插入一个&quot;8&quot;再插入一个&quot;7&quot;。</p>
-<p><img src="/articleImage/image-B+%E6%A0%91%E5%8E%9F.png" alt="image-B+树原"></p>
+<p><img src="../../articleImage/image-B+%E6%A0%91%E5%8E%9F.png" alt="image-B+树原"></p>
 <p>这里degree最大为4。B+树的节点中第一个值是上级节点中的代表。这里如果加入8。变为</p>
-<p><img src="/articleImage/image-B+%E6%A0%91%E6%8F%92%E5%85%A58.png" alt="image-B+树插入8"></p>
+<p><img src="../../articleImage/image-B+%E6%A0%91%E6%8F%92%E5%85%A58.png" alt="image-B+树插入8"></p>
 <p>看起来没什么影响，但是如果插入再加入7。</p>
-<p><img src="/articleImage/B+%E6%A0%91%E6%8F%92%E5%85%A57.gif" alt="image-B+树插入7"></p>
+<p><img src="../../articleImage/B+%E6%A0%91%E6%8F%92%E5%85%A57.gif" alt="image-B+树插入7"></p>
 <p>可以看到树结构很明显被改变了。8从根节点下降，7插队在8的前面，同时跟节点修改为7。</p>
 <p>如果是自增的，就不会出现这种问题。每次都是顺序插入。非自增的情况下，当数据量非常大，索引结构改变后，重构索引时间可能会非常长，影响值加入效率。</p>
 <h3 id="联合索引底层数据结构是怎样的">联合索引底层数据结构是怎样的?</h3>
 <p>多个字段共同组织成一个索引。一个表中创建2-3个联合索引合适。</p>
 <p>联合索引会根据索引的先后顺序进行排序。比如说存在一个<code>(name,age,position)</code>联合索引。现根据name进行排序，在name相等的前提下排序age，在name、age都相等的情况下排序position。整个结构看起来是<code>整体无序，局部有序</code>的。</p>
-<p><img src="/articleImage/image-%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%951.png" alt="image-联合索引1"></p>
+<p><img src="../../articleImage/image-%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%951.png" alt="image-联合索引1"></p>
 <h3 id="mysql最左前缀优化原则">MySQL最左前缀优化原则?</h3>
 <p>对于(name,age,position)联合索引</p>
 <p>联合索引是按照索引的先后进行排序的，当需要使用目标索引position，但是目标索引position之前的索引name、age均没有被使用的时候。联合索引就会失效。同理，当需要使用目标索引age，但是目标索引age之前的索引name没有使用，联合索引也会失效。充分体现了索引的<code>排序</code>特点。</p>
 <p>比如图中的age,如果需要查询<code>select * from table where age = 23</code>
 这条SQL进行全表扫描。因为age在索引中不是有序的。</p>
-<p><img src="/articleImage/image-%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%951.png" alt="image-联合索引1"></p>
+<p><img src="../../articleImage/image-%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%951.png" alt="image-联合索引1"></p>
 
 
         

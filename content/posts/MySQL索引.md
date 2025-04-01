@@ -3,7 +3,7 @@ title: MySQL索引(Innodb)
 date: 2025-03-03T21:49:34+08:00
 lastmod: 2025-03-03T21:49:34+08:00
 author: xiestr
-avatar: /img/avatar.jpg
+avatar: ../../img/avatar.jpg
 # authorlink: https://author.site
 # cover: /img/avatar.jpg
 # images:
@@ -57,13 +57,13 @@ MySQL中数据库表中通过主键对数据进行排序。(大概是这个意�
 
 当数据按大小顺序插入时，二叉树会形成一条长链。导致树的高度特别大。如果要查询某一个数据，需要从树的根节点遍历整棵树。这与随机存储的全表扫描没有区别。
 
-![image-二叉树长链](/articleImage/image-二叉树长链.png)
+![image-二叉树长链](../../articleImage/image-二叉树长链.png)
 
 2、红黑树:
 
 红黑树是一棵二叉平衡树，虽然不会像二叉树一样在顺序插入时形成一条长链。但是在某些情况下树依然很高。当数据量大的情况下，红黑树可能高度特别大。如果需要查询叶子节点的数据，可能有几十层的数据需要比对。
 
-![image-红黑树顺序存储](/articleImage/image-红黑树顺序存储.png)
+![image-红黑树顺序存储](../../articleImage/image-红黑树顺序存储.png)
 
 3、B树
 
@@ -75,7 +75,7 @@ MySQL中数据库表中通过主键对数据进行排序。(大概是这个意�
 
 •节点中的数据索引从左到右递增排列
 
-![image-MySQLB树](/articleImage/image-MySQLB树.png)
+![image-MySQLB树](../../articleImage/image-MySQLB树.png)
 
 4、B+树
 
@@ -87,7 +87,7 @@ MySQL中数据库表中通过主键对数据进行排序。(大概是这个意�
 
 每一个节点代表一个数据页，MySQL数据页大小默认为16KB(`16384`)。查询时先将节点load到内存，通过高效的搜索算法查询节点位置，最后匹配到相关的叶子节点。在内存中查找节点的花费时间可以忽略不计，时间主要耗费在将节点数据页load在内存当中，因此，树的层数越小，花费时间越短。
 
-![image-B+树](/articleImage/image-B+树.png)
+![image-B+树](../../articleImage/image-B+树.png)
 
 #### B+树结构可以存储多大的空间呢？
 
@@ -160,15 +160,15 @@ Innodb 存储引擎在存储数据库表的时候通过.ibd文件存储。.ibd�
 前文提到过：MySQL是一种`排好序`的数据结构。在查找元素时，自增主键比较大小肯定是比UUID这种字符串比较大小要快的。
 如果是非自增主键，B+树在每次插入的时候可能会改变树结构。影响查询后续的查询性能。比如说一租节点"1,2,3,4,5,6"中，插入一个"8"再插入一个"7"。
 
-![image-B+树原](/articleImage/image-B+树原.png)
+![image-B+树原](../../articleImage/image-B+树原.png)
 
 这里degree最大为4。B+树的节点中第一个值是上级节点中的代表。这里如果加入8。变为
 
-![image-B+树插入8](/articleImage/image-B+树插入8.png)
+![image-B+树插入8](../../articleImage/image-B+树插入8.png)
 
 看起来没什么影响，但是如果插入再加入7。
 
-![image-B+树插入7](/articleImage/B+树插入7.gif)
+![image-B+树插入7](../../articleImage/B+树插入7.gif)
 
 可以看到树结构很明显被改变了。8从根节点下降，7插队在8的前面，同时跟节点修改为7。
 
@@ -180,7 +180,7 @@ Innodb 存储引擎在存储数据库表的时候通过.ibd文件存储。.ibd�
 
 联合索引会根据索引的先后顺序进行排序。比如说存在一个`(name,age,position)`联合索引。现根据name进行排序，在name相等的前提下排序age，在name、age都相等的情况下排序position。整个结构看起来是`整体无序，局部有序`的。
 
-![image-联合索引1](/articleImage/image-联合索引1.png)
+![image-联合索引1](../../articleImage/image-联合索引1.png)
 
 ### MySQL最左前缀优化原则?
 
@@ -191,4 +191,4 @@ Innodb 存储引擎在存储数据库表的时候通过.ibd文件存储。.ibd�
 比如图中的age,如果需要查询`select * from table where age = 23`
 这条SQL进行全表扫描。因为age在索引中不是有序的。
 
-![image-联合索引1](/articleImage/image-联合索引1.png)
+![image-联合索引1](../../articleImage/image-联合索引1.png)
