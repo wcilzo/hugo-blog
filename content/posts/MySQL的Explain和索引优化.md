@@ -3,7 +3,7 @@ title: MySQL的Explain和索引优化学习笔记
 date: 2025-03-11T20:00:52+08:00
 lastmod: 2025-03-11T20:00:52+08:00
 author: XieStr
-# avatar: /img/author.jpg
+avatar: ../../img/avatar.jpg
 # authorlink: https://author.site
 # cover: /img/cover.jpg
 # images:

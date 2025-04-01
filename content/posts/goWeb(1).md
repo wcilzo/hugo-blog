@@ -3,7 +3,7 @@ title: Gee微框架学习记录(第一天)
 date: 2025-03-30T14:21:12+08:00
 lastmod: 2025-03-30T14:21:12+08:00
 author: XieStr
-# avatar: /img/author.jpg
+avatar: ../../img/avatar.jpg
 # authorlink: https://author.site
 # cover: /img/cover.jpg
 # images:
