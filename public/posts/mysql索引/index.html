@@ -3,7 +3,7 @@
   x-data
   :class="$store.darkMode.class()"
   :data-theme="$store.darkMode.theme()">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MySQL索引(Innodb) | xiestr&#39;s blog</title>
@@ -14,7 +14,7 @@
   
 
 
-<link rel="canonical" href="https://example.com/posts/mysql%E7%B4%A2%E5%BC%95/" />
+<link rel="canonical" href="http://localhost:1313/posts/mysql%E7%B4%A2%E5%BC%95/" />
 
 
 
@@ -34,7 +34,7 @@
 <meta name="generator" content="Hugo 0.145.0">
 
 
-<meta property="og:url" content="https://example.com/posts/mysql%E7%B4%A2%E5%BC%95/">
+<meta property="og:url" content="http://localhost:1313/posts/mysql%E7%B4%A2%E5%BC%95/">
   <meta property="og:site_name" content="xiestr&#39;s blog">
   <meta property="og:title" content="MySQL索引(Innodb)">
   <meta property="og:description" content="千万级数据表如何用B&#43;树索引快速查找?
@@ -63,9 +63,7 @@
 
 
 
-  
-
-<link rel="stylesheet" href="/css/output.min.css" />
+<link rel="stylesheet" href="/css/output.css" />
 
 
 
@@ -73,7 +71,6 @@
     
 
 <script type="module">
-  console.log("自定义 extend_head.html 已加载");
   document.addEventListener('DOMContentLoaded', function() {
     import('https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/+esm')
       .then(({default: mediumZoom}) => {
@@ -136,7 +133,7 @@
       
       <div>
         
-        <a href="https://example.com/" class="text-lg font-semibold cursor-pointer">
+        <a href="http://localhost:1313/" class="text-lg font-semibold cursor-pointer">
           xiestr
         </a>
         
@@ -332,15 +329,20 @@
 
 
 
+
+
   
+
 
 
 <div class="flex items-center">
   
   <div class="avatar mr-1">
     <div class="w-8 rounded-full">
-      <img class="my-0!" src="./img/avatar.jpg" alt="xiestr" />
-    </div>
+      <img class="my-0!" 
+      src="./img/avatar.jpg" 
+      alt="xiestr"
+      onerror="this.src='..\/..\/img\/avatar.jpg'"/>    </div>
   </div>
   
 
@@ -365,19 +367,19 @@
   
   
     <a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary"
-      href="https://x.com/intent/post?text=MySQL%e7%b4%a2%e5%bc%95%28Innodb%29&amp;url=https://example.com/posts/mysql%E7%B4%A2%E5%BC%95/" target="_blank" rel="noopener noreferrer"
+      href="https://x.com/intent/post?text=MySQL%e7%b4%a2%e5%bc%95%28Innodb%29&amp;url=http://localhost:1313/posts/mysql%E7%B4%A2%E5%BC%95/" target="_blank" rel="noopener noreferrer"
       title="Share on X">
       <ion-icon class="group-hover:text-primary-content" name="logo-x"></ion-icon>
     </a>
   
     <a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary"
-      href="https://facebook.com/sharer/sharer.php?u=https://example.com/posts/mysql%E7%B4%A2%E5%BC%95/" target="_blank" rel="noopener noreferrer"
+      href="https://facebook.com/sharer/sharer.php?u=http://localhost:1313/posts/mysql%E7%B4%A2%E5%BC%95/" target="_blank" rel="noopener noreferrer"
       title="Share on Facebook">
       <ion-icon class="group-hover:text-primary-content" name="logo-facebook"></ion-icon>
     </a>
   
     <a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary"
-      href="https://wa.me/?text=MySQL%e7%b4%a2%e5%bc%95%28Innodb%29%20https://example.com/posts/mysql%E7%B4%A2%E5%BC%95/" target="_blank" rel="noopener noreferrer"
+      href="https://wa.me/?text=MySQL%e7%b4%a2%e5%bc%95%28Innodb%29%20http://localhost:1313/posts/mysql%E7%B4%A2%E5%BC%95/" target="_blank" rel="noopener noreferrer"
       title="Share on WhatsApp">
       <ion-icon class="group-hover:text-primary-content" name="logo-whatsapp"></ion-icon>
     </a>
@@ -690,16 +692,12 @@
 
   
   
-    
-  
-  <script src="/js/grid.min.js"></script>
+  <script src="/js/grid.js"></script>
 
 
 
 
-  
-
-<script src="/js/main.min.js"></script>
+<script src="/js/main.js"></script>
 
     
 
