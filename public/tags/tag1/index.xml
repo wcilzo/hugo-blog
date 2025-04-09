@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tag1 on xiestr&#39;s blog</title>
+    <link>http://localhost:1313/tags/tag1/</link>
+    <description>Recent content in Tag1 on xiestr&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Fri, 04 Apr 2025 14:03:16 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/tag1/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Gee微框架学习记录(第三天)</title>
+      <link>http://localhost:1313/posts/goweb3/</link>
+      <pubDate>Fri, 04 Apr 2025 14:03:16 +0800</pubDate>
+      <guid>http://localhost:1313/posts/goweb3/</guid>
+      <description>&lt;p&gt;对7天系列中Gee框架学习的记录。推荐和Gee第三天一起食用。&lt;/p&gt;&#xA;&lt;p&gt;第三天前缀树路由是Gee框架的重难点。&lt;/p&gt;&#xA;&lt;p&gt;主要内容为&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;使用Trie树实现动态路由(dynamic route)解析&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

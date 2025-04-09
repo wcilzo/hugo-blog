@@ -2,31 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>GoWeb on xiestr&#39;s blog</title>
-    <link>http://localhost:1313/tags/goweb/</link>
+    <link>https://example.com/tags/goweb/</link>
     <description>Recent content in GoWeb on xiestr&#39;s blog</description>
     <generator>Hugo</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Fri, 04 Apr 2025 14:03:16 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/goweb/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 07 Apr 2025 10:50:30 +0800</lastBuildDate>
+    <atom:link href="https://example.com/tags/goweb/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Gee微框架学习记录(第四天)</title>
+      <link>https://example.com/posts/goweb4/</link>
+      <pubDate>Mon, 07 Apr 2025 10:50:30 +0800</pubDate>
+      <guid>https://example.com/posts/goweb4/</guid>
+      <description>&lt;p&gt;对7天系列中Gee框架学习的记录。推荐和Gee第四天一起食用。&lt;/p&gt;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;  &lt;blockquote class=&#34;dream-alert note&#34;&gt;&#xD;&#xA;    &lt;p class=&#34;heading&#34;&gt;&#xD;&#xA;      &lt;ion-icon name=&#34;information-circle-outline&#34;&gt;&lt;/ion-icon&gt;注意&lt;/p&gt;&#xD;&#xA;    &lt;p&gt;前面完成了动态路由的相关配置，Gee第四天主要讨论分组路由实现，第五天的中间件处理需要用到，所以这一节要理解。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Gee微框架学习记录(第三天)</title>
-      <link>http://localhost:1313/posts/goweb3/</link>
+      <link>https://example.com/posts/goweb3/</link>
       <pubDate>Fri, 04 Apr 2025 14:03:16 +0800</pubDate>
-      <guid>http://localhost:1313/posts/goweb3/</guid>
+      <guid>https://example.com/posts/goweb3/</guid>
       <description>&lt;p&gt;对7天系列中Gee框架学习的记录。推荐和Gee第三天一起食用。&lt;/p&gt;&#xA;&lt;p&gt;第三天前缀树路由是Gee框架的重难点。&lt;/p&gt;&#xA;&lt;p&gt;主要内容为&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;使用Trie树实现动态路由(dynamic route)解析&lt;/p&gt;</description>
     </item>
     <item>
       <title>Gee微框架学习记录(第二天)</title>
-      <link>http://localhost:1313/posts/goweb2/</link>
+      <link>https://example.com/posts/goweb2/</link>
       <pubDate>Sun, 30 Mar 2025 16:31:18 +0800</pubDate>
-      <guid>http://localhost:1313/posts/goweb2/</guid>
+      <guid>https://example.com/posts/goweb2/</guid>
       <description>&lt;p&gt;对7天系列中Gee框架学习的记录。推荐和Gee第二天一起食用。&lt;/p&gt;&#xA;&lt;p&gt;Context部分主要实现两个目标&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;将&lt;code&gt;路由(router)&lt;/code&gt;独立出来，方便之后增强。&lt;/li&gt;&#xA;&lt;li&gt;设计&lt;code&gt;上下文(Context)&lt;/code&gt;，封装 Request 和 Response ，提供对 JSON、HTML 等返回类型的支持。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;为什么要使用(设计)Context ?&lt;/p&gt;</description>
     </item>
     <item>
       <title>Gee微框架学习记录(第一天)</title>
-      <link>http://localhost:1313/posts/goweb1/</link>
+      <link>https://example.com/posts/goweb1/</link>
       <pubDate>Sun, 30 Mar 2025 14:21:12 +0800</pubDate>
-      <guid>http://localhost:1313/posts/goweb1/</guid>
+      <guid>https://example.com/posts/goweb1/</guid>
       <description>&lt;p&gt;对7天系列中Gee框架学习的记录。推荐和Gee第一天一起食用。&lt;/p&gt;&#xA;&lt;p&gt;Gee框架参考了Go的Web框架&lt;code&gt;Gin&lt;/code&gt;实现。&lt;/p&gt;&#xA;&lt;p&gt;主要为：&lt;/p&gt;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;  &lt;blockquote&gt;&#xD;&#xA;    &lt;p&gt;1、基本请求接口 Handler&lt;/p&gt;&#xA;&lt;p&gt;2、上下文 Context (重要)&lt;/p&gt;</description>
     </item>
   </channel>
