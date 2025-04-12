@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="zh-Hans"
+  x-data
+  :class="$store.darkMode.class()"
+  :data-theme="$store.darkMode.theme()">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gee微框架学习记录(第六、七天) | xiestr&#39;s blog</title>
+
+    
+  
+    <link href="/favicon.jpg" rel="icon" type="image/x-icon" />
+  
+
+
+<link rel="canonical" href="http://localhost:1313/posts/goweb6/" />
+
+
+
+<meta name="author" content="xiestr" />
+<meta name="description" content="对7天系列中Gee框架学习的记录。推荐和Gee第六、第七天一起食用。
+接下来的内容不多，所以将Gee系列第六、第七天的内容放在一起。
+第六天是模板HTML Template，这一节我认为相对来说不那么重要。因为现在已经有Next, Nuxt这些比较成熟的SSR前端渲染框架了。但是对于一个基本的网络框架来说，这一点还是必不可少的。
+" />
+
+
+<meta name="keywords" content="GoWeb">
+
+
+
+<meta name="generator" content="Hugo 0.145.0">
+
+
+<meta property="og:url" content="http://localhost:1313/posts/goweb6/">
+  <meta property="og:site_name" content="xiestr&#39;s blog">
+  <meta property="og:title" content="Gee微框架学习记录(第六、七天)">
+  <meta property="og:description" content="对7天系列中Gee框架学习的记录。推荐和Gee第六、第七天一起食用。
+接下来的内容不多，所以将Gee系列第六、第七天的内容放在一起。
+第六天是模板HTML Template，这一节我认为相对来说不那么重要。因为现在已经有Next, Nuxt这些比较成熟的SSR前端渲染框架了。但是对于一个基本的网络框架来说，这一点还是必不可少的。">
+  <meta property="og:locale" content="zh_Hans">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-04-12T23:22:56+08:00">
+    <meta property="article:modified_time" content="2025-04-12T23:22:56+08:00">
+    <meta property="article:tag" content="GoWeb">
+
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Gee微框架学习记录(第六、七天)">
+  <meta name="twitter:description" content="对7天系列中Gee框架学习的记录。推荐和Gee第六、第七天一起食用。
+接下来的内容不多，所以将Gee系列第六、第七天的内容放在一起。
+第六天是模板HTML Template，这一节我认为相对来说不那么重要。因为现在已经有Next, Nuxt这些比较成熟的SSR前端渲染框架了。但是对于一个基本的网络框架来说，这一点还是必不可少的。">
+
+
+
+
+<link rel="stylesheet" href="/css/output.css" />
+
+
+
+
+    
+
+<script type="module">
+  document.addEventListener('DOMContentLoaded', function() {
+    import('https://esm.sh/medium-zoom')
+      .then(({default: mediumZoom}) => {
+        mediumZoom('#dream-single-post-content img', {
+          margin: 24,
+          background: 'rgba(255, 255, 255, 0.5)',
+          scrollOffset: 0
+        });
+      });
+  });
+</script>
+
+
+<link rel="stylesheet" data-custom-syntax-highlighting />
+<style>
+  .chroma {
+    padding: 1em;
+    background-color: var(--dream-pre-bg, #f5f5f5);
+    border-radius: .5em;
+    overflow: auto;
+  }
+
+  html.dark .chroma {
+    background-color: var(--dream-pre-bg-dark, #262626);
+  }
+</style>
+
+
+
+
+
+
+
+
+
+    
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3/dist/cdn.min.js" integrity="sha256-PtHu0lJIiSHfZeNj1nFd6wTX+Squ255SGZ/fc8seCtM=" crossorigin="anonymous"></script>
+  </head>
+
+  <body x-data="{
+    flip: false,
+  }">
+    
+    <div id="dream-global-bg"></div>
+
+    
+<nav class="mt-4 lg:mt-8 py-4">
+
+  
+  <div class="container flex justify-between px-4">
+  
+    <section class="flex items-center gap-4">
+      <div class="avatar cursor-pointer hover:avatar-online" @click="flip = !flip" title="翻转一下！">
+        <div class="h-10 rounded-full">
+          <img src="/img/avatar.jpg" alt="xiestr" />
+        </div>
+      </div>
+
+      
+      <div>
+        
+        <a href="http://localhost:1313/" class="text-lg font-semibold cursor-pointer">
+          xiestr
+        </a>
+        
+        
+      </div>
+      
+    </section>
+
+    
+    
+
+    <div class="dropdown dropdown-end sm:hidden">
+      <div tabindex="0" role="button" class="btn btn-ghost btn-square" aria-label="Select an option">
+        <ion-icon name="menu" class="text-2xl"></ion-icon>
+      </div>
+      <ul tabindex="0" class="dropdown-content menu w-36 bg-base-100 rounded-box z-1 shadow-md">
+        
+
+
+
+
+
+
+
+<li>
+  <div role="link" tabindex="0" class="inline-flex items-center p-2 cursor-pointer" @click="flip = !flip" title="关于">
+    <ion-icon name="information-circle"></ion-icon>关于</div>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li>
+  <a class="inline-flex items-center p-2 cursor-pointer" href="/index.xml" title="RSS">
+    <ion-icon name="logo-rss"></ion-icon>
+    RSS
+  </a>
+</li>
+
+
+
+
+<li>
+  <a class="inline-flex items-center p-2 cursor-pointer" href="/posts" title="归档">
+    <ion-icon name="archive"></ion-icon>
+    归档
+  </a>
+</li>
+
+
+
+
+<li>
+  <a class="inline-flex items-center p-2 cursor-pointer" href="/categories" title="所有分类">
+    <ion-icon name="grid"></ion-icon>
+    所有分类
+  </a>
+</li>
+
+
+
+
+<li>
+  <a class="inline-flex items-center p-2 cursor-pointer" href="/tags" title="所有标签">
+    <ion-icon name="pricetags"></ion-icon>
+    所有标签
+  </a>
+</li>
+
+
+
+
+
+
+      </ul>
+    </div>
+    <section class="hidden sm:flex sm:items-center sm:gap-2 md:gap-4">
+      
+
+      
+      
+
+
+
+
+<div role="link" tabindex="0" class="text-sm font-semibold cursor-pointer hover:underline" @click="flip = !flip" title="关于">关于</div>
+
+
+
+
+
+      
+      
+
+
+
+
+
+      
+      
+<a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary" href="/index.xml" title="RSS">
+  <ion-icon class="group-hover:text-primary-content" name="logo-rss"></ion-icon>
+</a>
+
+
+      
+      
+<a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary" href="/posts" title="归档">
+  <ion-icon class="group-hover:text-primary-content" name="archive"></ion-icon>
+</a>
+
+
+      
+      
+<a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary" href="/categories" title="所有分类">
+  <ion-icon class="group-hover:text-primary-content" name="grid"></ion-icon>
+</a>
+
+
+      
+      
+<a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary" href="/tags" title="所有标签">
+  <ion-icon class="group-hover:text-primary-content" name="pricetags"></ion-icon>
+</a>
+
+
+      
+
+      
+
+      
+    </section>
+  </div>
+</nav>
+
+
+    <div class="flip-container" :class="{ 'flip-it': flip }">
+      <div class="flipper">
+        <div class="front">
+          <div class="container">
+            
+<div class="lg:grid lg:grid-cols-4 gap-4 mt-4 px-4">
+  <div class="hidden lg:block">
+    
+  </div>
+
+  <div class="lg:col-span-2">
+    <article class="mx-auto prose prose-quoteless dark:prose-invert max-w-[85ch]" id="dream-single-post-main" itemscope itemtype="http://schema.org/Article">
+      
+  <meta itemprop="name" content="Gee微框架学习记录(第六、七天)">
+  <meta itemprop="description" content="对7天系列中Gee框架学习的记录。推荐和Gee第六、第七天一起食用。
+接下来的内容不多，所以将Gee系列第六、第七天的内容放在一起。
+第六天是模板HTML Template，这一节我认为相对来说不那么重要。因为现在已经有Next, Nuxt这些比较成熟的SSR前端渲染框架了。但是对于一个基本的网络框架来说，这一点还是必不可少的。">
+  <meta itemprop="datePublished" content="2025-04-12T23:22:56+08:00">
+  <meta itemprop="dateModified" content="2025-04-12T23:22:56+08:00">
+  <meta itemprop="wordCount" content="1384">
+  <meta itemprop="keywords" content="GoWeb">
+
+      <header>
+        <h1 itemprop="headline">Gee微框架学习记录(第六、七天)</h1>
+        <p class="text-sm">
+          
+            星期六, 4月 12, 2025
+          
+
+          | <span>3分钟阅读</span>
+
+          
+          | <span>更新于
+            
+              星期六, 4月 12, 2025
+            </span>
+          
+        </p>
+
+        
+        <div class="flex justify-between">
+          
+            
+
+
+
+
+
+
+  
+
+
+
+<div class="flex items-center">
+  
+  <div class="avatar mr-1">
+    <div class="w-8 rounded-full">
+      <img class="my-0!" 
+      src="./img/avatar.jpg" 
+      alt="xiestr"
+      onerror="this.src='..\/..\/img\/avatar.jpg'"/>    </div>
+  </div>
+  
+
+  <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+  
+    
+      <span itemprop="name">xiestr</span>
+    
+  
+  </span>
+</div>
+
+          
+
+          <div class="flex items-center gap-2">
+  
+  
+
+  
+  
+  
+  
+  
+    <a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary"
+      href="https://x.com/intent/post?text=Gee%e5%be%ae%e6%a1%86%e6%9e%b6%e5%ad%a6%e4%b9%a0%e8%ae%b0%e5%bd%95%28%e7%ac%ac%e5%85%ad%e3%80%81%e4%b8%83%e5%a4%a9%29&amp;url=http://localhost:1313/posts/goweb6/" target="_blank" rel="noopener noreferrer"
+      title="Share on X">
+      <ion-icon class="group-hover:text-primary-content" name="logo-x"></ion-icon>
+    </a>
+  
+    <a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary"
+      href="https://facebook.com/sharer/sharer.php?u=http://localhost:1313/posts/goweb6/" target="_blank" rel="noopener noreferrer"
+      title="Share on Facebook">
+      <ion-icon class="group-hover:text-primary-content" name="logo-facebook"></ion-icon>
+    </a>
+  
+    <a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary"
+      href="https://wa.me/?text=Gee%e5%be%ae%e6%a1%86%e6%9e%b6%e5%ad%a6%e4%b9%a0%e8%ae%b0%e5%bd%95%28%e7%ac%ac%e5%85%ad%e3%80%81%e4%b8%83%e5%a4%a9%29%20http://localhost:1313/posts/goweb6/" target="_blank" rel="noopener noreferrer"
+      title="Share on WhatsApp">
+      <ion-icon class="group-hover:text-primary-content" name="logo-whatsapp"></ion-icon>
+    </a>
+  
+
+  
+  
+</div>
+
+        </div>
+      </header>
+
+      <section id="dream-single-post-content" itemprop="articleBody">
+        
+
+        <p>对7天系列中Gee框架学习的记录。推荐和Gee第六、第七天一起食用。</p>
+<p>接下来的内容不多，所以将Gee系列第六、第七天的内容放在一起。</p>
+<p>第六天是模板HTML Template，这一节我认为相对来说不那么重要。因为现在已经有Next, Nuxt这些比较成熟的SSR前端渲染框架了。但是对于一个基本的网络框架来说，这一点还是必不可少的。</p>
+<p>在完成HTML Template模板之前，先完成静态文件读取渲染到网页端。</p>
+<p>gee.go</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// create static handler</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">group</span> <span class="o">*</span><span class="nx">RouterGroup</span><span class="p">)</span> <span class="nf">createStaticHandler</span><span class="p">(</span><span class="nx">relativePath</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">fs</span> <span class="nx">http</span><span class="p">.</span><span class="nx">FileSystem</span><span class="p">)</span> <span class="nx">HandlerFunc</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 绝对路径获取</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">absolutePath</span> <span class="o">:=</span> <span class="nx">path</span><span class="p">.</span><span class="nf">Join</span><span class="p">(</span><span class="nx">group</span><span class="p">.</span><span class="nx">prefix</span><span class="p">,</span> <span class="nx">relativePath</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 解析请求地址映射到服务器文件上的真实地址</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fileServer</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nf">StripPrefix</span><span class="p">(</span><span class="nx">absolutePath</span><span class="p">,</span> <span class="nx">http</span><span class="p">.</span><span class="nf">FileServer</span><span class="p">(</span><span class="nx">fs</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 返回一个HandlerFunc</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="kd">func</span><span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">Context</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">file</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nf">Param</span><span class="p">(</span><span class="s">&#34;filepath&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">// Check if file exists and/or if we have permission to access it</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">// 检查文件是否存在</span>
+</span></span><span class="line"><span class="cl">         <span class="k">if</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">fs</span><span class="p">.</span><span class="nf">Open</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">c</span><span class="p">.</span><span class="nf">Status</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusNotFound</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">			<span class="k">return</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">// 交给标准库文件服务器处理</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">fileServer</span><span class="p">.</span><span class="nf">ServeHTTP</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">Writer</span><span class="p">,</span> <span class="nx">c</span><span class="p">.</span><span class="nx">Req</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// serve static files</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">group</span> <span class="o">*</span><span class="nx">RouterGroup</span><span class="p">)</span> <span class="nf">Static</span><span class="p">(</span><span class="nx">relativePath</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">root</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 1. 创建静态文件处理handler</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">handler</span> <span class="o">:=</span> <span class="nx">group</span><span class="p">.</span><span class="nf">createStaticHandler</span><span class="p">(</span><span class="nx">relativePath</span><span class="p">,</span> <span class="nx">http</span><span class="p">.</span><span class="nf">Dir</span><span class="p">(</span><span class="nx">root</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 2. 构造URL匹配模式</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">urlPattern</span> <span class="o">:=</span> <span class="nx">path</span><span class="p">.</span><span class="nf">Join</span><span class="p">(</span><span class="nx">relativePath</span><span class="p">,</span> <span class="s">&#34;/*filepath&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 3. 注册GET路由</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">group</span><span class="p">.</span><span class="nf">GET</span><span class="p">(</span><span class="nx">urlPattern</span><span class="p">,</span> <span class="nx">handler</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>开发者由Static方法查看静态文件。</p>
+<h3 id="html-模板渲染">HTML 模板渲染</h3>
+<p>一样的，由Engine管理HTML模板，因此定义到Engine的结构体中。</p>
+<p>gee.go</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">Engine</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="o">*</span><span class="nx">RouterGroup</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">router</span>        <span class="o">*</span><span class="nx">router</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">groups</span>        <span class="p">[]</span><span class="o">*</span><span class="nx">RouterGroup</span>     <span class="c1">// store all groups</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">htmlTemplates</span> <span class="o">*</span><span class="nx">template</span><span class="p">.</span><span class="nx">Template</span> <span class="c1">// for html render</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">funcMap</span>       <span class="nx">template</span><span class="p">.</span><span class="nx">FuncMap</span>   <span class="c1">// for html render</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">engine</span> <span class="o">*</span><span class="nx">Engine</span><span class="p">)</span> <span class="nf">SetFuncMap</span><span class="p">(</span><span class="nx">funcMap</span> <span class="nx">template</span><span class="p">.</span><span class="nx">FuncMap</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">engine</span><span class="p">.</span><span class="nx">funcMap</span> <span class="p">=</span> <span class="nx">funcMap</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">engine</span> <span class="o">*</span><span class="nx">Engine</span><span class="p">)</span> <span class="nf">LoadHTMLGlob</span><span class="p">(</span><span class="nx">pattern</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">engine</span><span class="p">.</span><span class="nx">htmlTemplates</span> <span class="p">=</span> <span class="nx">template</span><span class="p">.</span><span class="nf">Must</span><span class="p">(</span><span class="nx">template</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;&#34;</span><span class="p">).</span><span class="nf">Funcs</span><span class="p">(</span><span class="nx">engine</span><span class="p">.</span><span class="nx">funcMap</span><span class="p">).</span><span class="nf">ParseGlob</span><span class="p">(</span><span class="nx">pattern</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p><code>*template.Template</code> 将所有的模板加载进内存，<code>template.FuncMap</code>对象是所有的自定义模板渲染函数。</p>
+<p>context.go</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Context</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// ...</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// engine pointer</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">engine</span> <span class="o">*</span><span class="nx">Engine</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 重写 HTML函数</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">Context</span><span class="p">)</span> <span class="nf">HTML</span><span class="p">(</span><span class="nx">code</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">name</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">data</span> <span class="kd">interface</span><span class="p">{})</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">c</span><span class="p">.</span><span class="nf">SetHeader</span><span class="p">(</span><span class="s">&#34;Content-Type&#34;</span><span class="p">,</span> <span class="s">&#34;text/html&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">c</span><span class="p">.</span><span class="nf">Status</span><span class="p">(</span><span class="nx">code</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">engine</span><span class="p">.</span><span class="nx">htmlTemplates</span><span class="p">.</span><span class="nf">ExecuteTemplate</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">Writer</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">data</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">c</span><span class="p">.</span><span class="nf">Fail</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="nx">err</span><span class="p">.</span><span class="nf">Error</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>在 <code>Context</code> 中添加了成员变量 <code>engine *Engine</code>，这样就能够通过 Context 访问 Engine 中的 HTML 模板(是共享资源)。</p>
+<p>gee.go</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">engine</span> <span class="o">*</span><span class="nx">Engine</span><span class="p">)</span> <span class="nf">ServeHTTP</span><span class="p">(</span><span class="nx">w</span> <span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span> <span class="nx">req</span> <span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// ...</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">c</span> <span class="o">:=</span> <span class="nf">newContext</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span> <span class="nx">req</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">c</span><span class="p">.</span><span class="nx">handlers</span> <span class="p">=</span> <span class="nx">middlewares</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 实例化Context时要赋值</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">c</span><span class="p">.</span><span class="nx">engine</span> <span class="p">=</span> <span class="nx">engine</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">engine</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nf">handle</span><span class="p">(</span><span class="nx">c</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><hr>
+<p>第七天的Panic Recover 错误恢复</p>
+<ul>
+<li>panic</li>
+</ul>
+<p>Go中常见的错误处理方法是返回error，交给调用者决定后续如何处理。有时候开发者写的程序逻辑错误也有可能会触发panic。我们可以利用这一点，将无法恢复的错误手动触发panic。再结合defer 和 revover，就完成了错误处理机制。</p>
+<ul>
+<li>defer</li>
+</ul>
+<p>panic 导致的程序退出前，会先处理当前协程上defer的任务。执行结束后退出，类似java语言的<code>try...catch</code>代码块。可以定义多个defer，在同一个函数中定义的defer会逆序执行，从最后一个定义的defer函数一直逆序执行到第一个定义的defer函数。当全部defer执行完后，抛出panic。</p>
+<ul>
+<li>recover</li>
+</ul>
+<p>recover在defer中生效，避免发生panic导致的程序终止。</p>
+<h3 id="gee的错误处理">Gee的错误处理</h3>
+<p>recovery.go</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">gee</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;log&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;net/http&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;runtime&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;strings&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// print stack trace for debug</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">trace</span><span class="p">(</span><span class="nx">message</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="nx">pcs</span> <span class="p">[</span><span class="mi">32</span><span class="p">]</span><span class="kt">uintptr</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Callers 用来返回调用栈的程序计数器</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 0 是他自己</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 1是上一层trace</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 2是再上一层的defer func</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">n</span> <span class="o">:=</span> <span class="nx">runtime</span><span class="p">.</span><span class="nf">Callers</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="nx">pcs</span><span class="p">[:])</span> <span class="c1">// skip first 3 caller</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="nx">str</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">Builder</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">str</span><span class="p">.</span><span class="nf">WriteString</span><span class="p">(</span><span class="nx">message</span> <span class="o">+</span> <span class="s">&#34;\nTraceback:&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">pc</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">pcs</span><span class="p">[:</span><span class="nx">n</span><span class="p">]</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 获取对应的函数</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">fn</span> <span class="o">:=</span> <span class="nx">runtime</span><span class="p">.</span><span class="nf">FuncForPC</span><span class="p">(</span><span class="nx">pc</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">// 获取到调用该函数的文件名称和行号，打印到日志 </span>
+</span></span><span class="line"><span class="cl">         <span class="nx">file</span><span class="p">,</span> <span class="nx">line</span> <span class="o">:=</span> <span class="nx">fn</span><span class="p">.</span><span class="nf">FileLine</span><span class="p">(</span><span class="nx">pc</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">str</span><span class="p">.</span><span class="nf">WriteString</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34;\n\t%s:%d&#34;</span><span class="p">,</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">line</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nx">str</span><span class="p">.</span><span class="nf">String</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">Recovery</span><span class="p">()</span> <span class="nx">HandlerFunc</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="kd">func</span><span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">Context</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">defer</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nb">recover</span><span class="p">();</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="nx">message</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34;%s&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">				<span class="nx">log</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%s\n\n&#34;</span><span class="p">,</span> <span class="nf">trace</span><span class="p">(</span><span class="nx">message</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">				<span class="nx">c</span><span class="p">.</span><span class="nf">Fail</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusInternalServerError</span><span class="p">,</span> <span class="s">&#34;Internal Server Error&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">		<span class="nx">c</span><span class="p">.</span><span class="nf">Next</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>这里将错误处理变成了中间件的形式。</p>
+<p>Recover函数:</p>
+<p>用defer挂载错误恢复函数，在函数中调用recover捕获panic，最后打印堆栈数据到日志当中。返回错误信息给用户。</p>
+<p>trace用于捕获panic。</p>
+<p><strong>使用方式：</strong> 通过前面笔记中定义的Use函数使用(作为一种中间件使用).</p>
+<hr>
+<p>Gee框架的学习笔记到此完结，最后这一篇并没有涉及到比较深入的讨论，特别是HTML模板这一块。对于错误恢复机制来说，灵活的运用了前面定义的中间件部分，是一个很好的学习例子。</p>
+
+
+        
+      </section>
+
+      
+
+      
+    </article>
+  </div>
+
+  <div class="hidden lg:flex lg:flex-col lg:items-end">
+    
+  </div>
+</div>
+
+
+            
+<footer class="flex justify-between items-center gap-2 px-4 py-12">
+
+  <div>
+  
+  <p>
+    © 2025 xiestr&#39;s blog
+  </p>
+  
+
+  
+  <p class="text-sm">
+    🌱
+    <span class="text-base-content/60">
+      Powered by <a class="hover:underline" href="https://gohugo.io/" target="_blank">Hugo</a> with theme
+      <a class="hover:underline" href="https://github.com/g1eny0ung/hugo-theme-dream" target="_blank">Dream</a>.</span
+    >
+  </p>
+  
+</div>
+
+  <div
+  x-data="{ icons: [
+    { name: 'sunny', status: 'n' },
+    { name: 'moon', status: 'y' },
+    { name: 'desktop', status: 'auto' }
+  ] }"
+  class="flex items-center gap-2 h-[32px] px-2 bg-base-100 border border-base-content/30 rounded-full"
+>
+  <template x-for="icon in icons">
+    <div
+      role="button"
+      tabindex="0"
+      :aria-label="'Select ' + icon.name + ' mode'"
+      class="group inline-flex justify-center items-center p-1 rounded-full cursor-pointer hover:bg-primary"
+      :class="$store.darkMode.icon() === icon.name && 'bg-primary'"
+      @click="$store.darkMode.toggle(icon.status)"
+    >
+      <ion-icon
+        :name="`${icon.name}-outline`"
+        class="group-hover:text-primary-content"
+        :class="$store.darkMode.icon() === icon.name && 'text-primary-content'"
+      >
+      </ion-icon>
+    </div>
+  </template>
+</div>
+
+</footer>
+
+          </div>
+        </div>
+        <div class="back">
+          <div class="container">
+            
+            <div class="dream-grid dream-grid-about">
+  
+  
+  
+  <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 p-4 dream-column">
+    <article
+      class="card bg-base-100 hover:bg-base-content/10 shadow-xl dark:border dark:border-base-content/30"
+    >
+      <div class="card-body">
+        <div class="card-title">Me</div>
+
+        <div class="prose dark:prose-invert">
+          <p>你好，这里是XieStr.</p>
+<p>有问题欢迎联系</p>
+<p>这是我的邮箱：kilzo_<a href="mailto:zh@outlook.com" target="_blank">zh@outlook.com</a>
+</p>
+
+        </div>
+      </div>
+    </article>
+  </div>
+  
+  
+
+  
+
+  
+</div>
+
+            
+
+            
+<footer class="flex justify-between items-center gap-2 px-4 py-12">
+
+  <div>
+  
+  <p>
+    © 2025 xiestr&#39;s blog
+  </p>
+  
+
+  
+  <p class="text-sm">
+    🌱
+    <span class="text-base-content/60">
+      Powered by <a class="hover:underline" href="https://gohugo.io/" target="_blank">Hugo</a> with theme
+      <a class="hover:underline" href="https://github.com/g1eny0ung/hugo-theme-dream" target="_blank">Dream</a>.</span
+    >
+  </p>
+  
+</div>
+
+  <div
+  x-data="{ icons: [
+    { name: 'sunny', status: 'n' },
+    { name: 'moon', status: 'y' },
+    { name: 'desktop', status: 'auto' }
+  ] }"
+  class="flex items-center gap-2 h-[32px] px-2 bg-base-100 border border-base-content/30 rounded-full"
+>
+  <template x-for="icon in icons">
+    <div
+      role="button"
+      tabindex="0"
+      :aria-label="'Select ' + icon.name + ' mode'"
+      class="group inline-flex justify-center items-center p-1 rounded-full cursor-pointer hover:bg-primary"
+      :class="$store.darkMode.icon() === icon.name && 'bg-primary'"
+      @click="$store.darkMode.toggle(icon.status)"
+    >
+      <ion-icon
+        :name="`${icon.name}-outline`"
+        class="group-hover:text-primary-content"
+        :class="$store.darkMode.icon() === icon.name && 'text-primary-content'"
+      >
+      </ion-icon>
+    </div>
+  </template>
+</div>
+
+</footer>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+  window.lightTheme = "emerald"
+  window.darkTheme = "business"
+</script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
+
+  
+  
+  <script src="/js/grid.js"></script>
+
+
+
+
+<script src="/js/main.js"></script>
+
+    
+
+
+
+<script>
+  window.customSyntaxHighlighting = {
+    light: "/css/syntax-light.min.css",
+    dark: "/css/syntax-dark.min.css"
+  }
+
+  document.addEventListener('alpine:initialized', () => {
+    var isDark = Alpine.store('darkMode').isDark()
+    var customSyntaxHighlightingUrl = isDark ? window.customSyntaxHighlighting.dark : window.customSyntaxHighlighting.light
+
+    document
+      .querySelector('link[data-custom-syntax-highlighting]')
+      .setAttribute('href', customSyntaxHighlightingUrl)
+  })
+</script>
+
+
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@7.4.0/dist/ionicons/ionicons.esm.js" integrity="sha256-/IFmi82bIhdYWctu0UddSlJqpnzWm7Vh2C4CM32wF/k=" crossorigin="anonymous"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@7.4.0/dist/ionicons/ionicons.js" integrity="sha256-mr7eJMX3VC3F7G32mk4oWp1C6a2tlMYxUdptfT7uKI8=" crossorigin="anonymous"></script>
+  </body>
+</html>

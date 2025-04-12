@@ -3,7 +3,6 @@ title: Gee微框架学习记录(第四天)
 date: 2025-04-07T10:50:30+08:00
 lastmod: 2025-04-07T10:50:30+08:00
 author: xiestr
-avatar: /img/author.jpg
 avatar: ../../img/avatar.jpg
 # authorlink: https://author.site
 # cover: /img/cover.jpg

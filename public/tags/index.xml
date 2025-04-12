@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on xiestr&#39;s blog</title>
-    <link>https://example.com/tags/</link>
+    <link>http://localhost:1313/tags/</link>
     <description>Recent content in Tags on xiestr&#39;s blog</description>
     <generator>Hugo</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Mon, 07 Apr 2025 10:50:30 +0800</lastBuildDate>
-    <atom:link href="https://example.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 12 Apr 2025 23:22:56 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>GoWeb</title>
-      <link>https://example.com/tags/goweb/</link>
-      <pubDate>Mon, 07 Apr 2025 10:50:30 +0800</pubDate>
-      <guid>https://example.com/tags/goweb/</guid>
+      <link>http://localhost:1313/tags/goweb/</link>
+      <pubDate>Sat, 12 Apr 2025 23:22:56 +0800</pubDate>
+      <guid>http://localhost:1313/tags/goweb/</guid>
       <description></description>
     </item>
     <item>
       <title>MySQL</title>
-      <link>https://example.com/tags/mysql/</link>
+      <link>http://localhost:1313/tags/mysql/</link>
       <pubDate>Mon, 03 Mar 2025 21:49:34 +0800</pubDate>
-      <guid>https://example.com/tags/mysql/</guid>
+      <guid>http://localhost:1313/tags/mysql/</guid>
       <description></description>
     </item>
   </channel>
