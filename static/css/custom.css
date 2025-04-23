@@ -1,0 +1,31 @@
+/* 添加标题和图标 */
+#TableOfContents.my-toc-container {
+    border-left: 3px solid #3498db;
+    padding: 1.5rem;
+    background: #f8f9fa;
+}
+
+#TableOfContents .toc-header {
+    margin-top: 0;
+    color: #2c3e50;
+}
+
+/* 修改默认列表样式 */
+#TableOfContents ul {
+    list-style: none;
+    padding-left: 1rem;
+}
+
+#TableOfContents li {
+    margin: 0.5rem 0;
+}
+
+#TableOfContents a {
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+#TableOfContents a:hover {
+    color: #7ee787;
+    border-bottom: 1px dashed;
+}

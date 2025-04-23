@@ -46,6 +46,18 @@ siteStartYear = 2025
 
 favicon = "favicon.jpg"
 
+# options
+stickyNav = true
+reorderNavItems = ["search", "rss", "posts", "categories", "tags"]
+showTableOfContents = true
+showPrevNextPost = true
+# collapseNavItems = ["posts", "categories", "tags"]
+# noDefaultSummaryCover = true
+# showSummaryCoverInPost = true
+# imageZoomableInPost = true
+# reorderShares = ["x", "facebook", "whatsapp"]
+
+
 # Syntax highlighting
 customSyntaxHighlighting = true
 
@@ -55,18 +67,10 @@ customSyntaxHighlighting = true
   guessSyntax = true
   codeFences = true
   noClasses = false
-
-# options
-stickyNav = true
-reorderNavItems = ["search", "rss", "posts", "categories", "tags"]
-# collapseNavItems = ["posts", "categories", "tags"]
-# noDefaultSummaryCover = true
-# showTableOfContents = true
-# showSummaryCoverInPost = true
-# imageZoomableInPost = true
-showPrevNextPost = true
-# reorderShares = ["x", "facebook", "whatsapp"]
-
+[markup.tableOfContents]
+  endLevel = 5
+  ordered = false
+  startLevel = 2
 # [params.navItems]
 
 # [params.twikoo]
@@ -75,8 +79,8 @@ showPrevNextPost = true
 # region = ""
 # lang = ""
 
-# [params.advanced]
-# customCSS = ["css/custom.css"]
+[params.advanced]
+  customCSS = ["css/custom.css"]
 # customJS = []
 
 [params.experimental]
