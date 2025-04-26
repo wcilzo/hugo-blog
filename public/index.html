@@ -51,6 +51,8 @@
      
 
     
+    <link rel="stylesheet" href="/css/custom.css" />
+    
 
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3/dist/cdn.min.js" integrity="sha256-PtHu0lJIiSHfZeNj1nFd6wTX+Squ255SGZ/fc8seCtM=" crossorigin="anonymous"></script>
   </head>
@@ -62,7 +64,10 @@
     <div id="dream-global-bg"></div>
 
     
-<nav class="mt-4 lg:mt-8 py-4">
+<nav x-data="{ isSticky: false }"
+  x-init="window.addEventListener('scroll', () => { isSticky = window.scrollY > 30 })"
+  class="sticky top-0 z-30 mt-4 lg:mt-8 py-4"
+  :class="{ 'bg-base-100 shadow-lg dark:border-b dark:border-base-content/30': isSticky }">
 
   
   <div class="container flex justify-between px-4">
@@ -88,6 +93,8 @@
 
     
     
+      
+    
 
     <div class="dropdown dropdown-end sm:hidden">
       <div tabindex="0" role="button" class="btn btn-ghost btn-square" aria-label="Select an option">
@@ -95,21 +102,6 @@
       </div>
       <ul tabindex="0" class="dropdown-content menu w-36 bg-base-100 rounded-box z-1 shadow-md">
         
-
-
-
-
-
-
-
-<li>
-  <div role="link" tabindex="0" class="inline-flex items-center p-2 cursor-pointer" @click="flip = !flip" title="关于">
-    <ion-icon name="information-circle"></ion-icon>关于</div>
-</li>
-
-
-
-
 
 
 
@@ -166,18 +158,6 @@
     </div>
     <section class="hidden sm:flex sm:items-center sm:gap-2 md:gap-4">
       
-
-      
-      
-
-
-
-
-<div role="link" tabindex="0" class="text-sm font-semibold cursor-pointer hover:underline" @click="flip = !flip" title="关于">关于</div>
-
-
-
-
 
       
       
@@ -242,8 +222,8 @@
     
     
     <picture>
-      <source srcset="/images/default4_hu_ae815e0f1649c253.webp" type="image/webp" />
-      <img src="/images/default4.jpg" alt="/images/default4.jpg" />
+      <source srcset="/images/default2_hu_c96b8a8cc3f55f81.webp" type="image/webp" />
+      <img src="/images/default2.jpg" alt="/images/default2.jpg" />
     </picture>
     
   </figure>
@@ -315,8 +295,8 @@
     
     
     <picture>
-      <source srcset="/images/default1_hu_33478ca164b4fce4.webp" type="image/webp" />
-      <img src="/images/default1.jpg" alt="/images/default1.jpg" />
+      <source srcset="/images/default2_hu_c96b8a8cc3f55f81.webp" type="image/webp" />
+      <img src="/images/default2.jpg" alt="/images/default2.jpg" />
     </picture>
     
   </figure>
@@ -393,8 +373,8 @@
     
     
     <picture>
-      <source srcset="/images/default3_hu_599e07ea93afc07d.webp" type="image/webp" />
-      <img src="/images/default3.jpg" alt="/images/default3.jpg" />
+      <source srcset="/images/default1_hu_33478ca164b4fce4.webp" type="image/webp" />
+      <img src="/images/default1.jpg" alt="/images/default1.jpg" />
     </picture>
     
   </figure>
@@ -471,8 +451,8 @@
     
     
     <picture>
-      <source srcset="/images/default3_hu_599e07ea93afc07d.webp" type="image/webp" />
-      <img src="/images/default3.jpg" alt="/images/default3.jpg" />
+      <source srcset="/images/default1_hu_33478ca164b4fce4.webp" type="image/webp" />
+      <img src="/images/default1.jpg" alt="/images/default1.jpg" />
     </picture>
     
   </figure>
@@ -624,8 +604,8 @@
     
     
     <picture>
-      <source srcset="/images/default2_hu_c96b8a8cc3f55f81.webp" type="image/webp" />
-      <img src="/images/default2.jpg" alt="/images/default2.jpg" />
+      <source srcset="/images/default1_hu_33478ca164b4fce4.webp" type="image/webp" />
+      <img src="/images/default1.jpg" alt="/images/default1.jpg" />
     </picture>
     
   </figure>
@@ -703,8 +683,8 @@
     
     
     <picture>
-      <source srcset="/images/default3_hu_599e07ea93afc07d.webp" type="image/webp" />
-      <img src="/images/default3.jpg" alt="/images/default3.jpg" />
+      <source srcset="/images/default4_hu_ae815e0f1649c253.webp" type="image/webp" />
+      <img src="/images/default4.jpg" alt="/images/default4.jpg" />
     </picture>
     
   </figure>
@@ -955,6 +935,8 @@
 
     
 
+    
+    <script src="/js/custom.js"></script>
     
 
     

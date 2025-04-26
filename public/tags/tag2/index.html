@@ -14,7 +14,7 @@
   
 
 
-<link rel="canonical" href="http://localhost:1313/tags/tag2/" />
+<link rel="canonical" href="//ind:1313/tags/tag2/" />
 
 
 
@@ -26,7 +26,7 @@
 <meta name="generator" content="Hugo 0.145.0">
 
 
-<meta property="og:url" content="http://localhost:1313/tags/tag2/">
+<meta property="og:url" content="//ind:1313/tags/tag2/">
   <meta property="og:site_name" content="xiestr&#39;s blog">
   <meta property="og:title" content="Tag2">
   <meta property="og:description" content="小谢的时光记录~">
@@ -51,6 +51,8 @@
      
 
     
+    <link rel="stylesheet" href="/css/custom.css" />
+    
 
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3/dist/cdn.min.js" integrity="sha256-PtHu0lJIiSHfZeNj1nFd6wTX+Squ255SGZ/fc8seCtM=" crossorigin="anonymous"></script>
   </head>
@@ -62,7 +64,10 @@
     <div id="dream-global-bg"></div>
 
     
-<nav class="mt-4 lg:mt-8 py-4">
+<nav x-data="{ isSticky: false }"
+  x-init="window.addEventListener('scroll', () => { isSticky = window.scrollY > 30 })"
+  class="sticky top-0 z-30 mt-4 lg:mt-8 py-4"
+  :class="{ 'bg-base-100 shadow-lg dark:border-b dark:border-base-content/30': isSticky }">
 
   
   <div class="container flex justify-between px-4">
@@ -77,7 +82,7 @@
       
       <div>
         
-        <a href="http://localhost:1313/" class="text-lg font-semibold cursor-pointer">
+        <a href="//ind:1313/" class="text-lg font-semibold cursor-pointer">
           xiestr
         </a>
         
@@ -88,6 +93,8 @@
 
     
     
+      
+    
 
     <div class="dropdown dropdown-end sm:hidden">
       <div tabindex="0" role="button" class="btn btn-ghost btn-square" aria-label="Select an option">
@@ -95,21 +102,6 @@
       </div>
       <ul tabindex="0" class="dropdown-content menu w-36 bg-base-100 rounded-box z-1 shadow-md">
         
-
-
-
-
-
-
-
-<li>
-  <div role="link" tabindex="0" class="inline-flex items-center p-2 cursor-pointer" @click="flip = !flip" title="关于">
-    <ion-icon name="information-circle"></ion-icon>关于</div>
-</li>
-
-
-
-
 
 
 
@@ -166,18 +158,6 @@
     </div>
     <section class="hidden sm:flex sm:items-center sm:gap-2 md:gap-4">
       
-
-      
-      
-
-
-
-
-<div role="link" tabindex="0" class="text-sm font-semibold cursor-pointer hover:underline" @click="flip = !flip" title="关于">关于</div>
-
-
-
-
 
       
       
@@ -276,34 +256,25 @@
       <div class="dream-grid">
         
           <div class="w-full md:w-1/2 lg:w-1/3 p-4 dream-column">
-            <a class="card bg-base-100 hover:bg-base-content/10 shadow-xl cursor-pointer dark:border dark:border-base-content/30" href="/posts/goweb3/">
+            <a class="card bg-base-100 hover:bg-base-content/10 shadow-xl cursor-pointer dark:border dark:border-base-content/30" href="/posts/gocache1/">
   
   <figure>
     
-    
-    <picture>
-      <source srcset="/images/default3_hu_599e07ea93afc07d.webp" type="image/webp" />
-      <img src="/images/default3.jpg" alt="/images/default3.jpg" />
-    </picture>
+    <img src="/img/cover.jpg" alt="GoCache(1)" />
     
   </figure>
   
 
   <div class="card-body">
-    <h2 class="card-title">Gee微框架学习记录(第三天)</h2>
+    <h2 class="card-title">GoCache(1)</h2>
 
     <p class="date text-base-content/60">
     
-      星期五, 4月 4, 2025
+      星期三, 4月 16, 2025
     
     </p>
 
-    <p>对7天系列中Gee框架学习的记录。推荐和Gee第三天一起食用。</p>
-<p>第三天前缀树路由是Gee框架的重难点。</p>
-<p>主要内容为</p>
-<ul>
-<li>
-<p>使用Trie树实现动态路由(dynamic route)解析</p>
+    <p>Cut out summary from your post content here.</p>
 
     
     <div class="card-actions justify-between items-center mt-4">
@@ -315,25 +286,17 @@
 
 
 
-  
-
 
 
 <div class="flex items-center">
   
-  <div class="avatar mr-1">
-    <div class="w-8 rounded-full">
-      <img class="my-0!" 
-      src="./img/avatar.jpg" 
-      alt="xieStr"
-      onerror="this.src='..\/..\/img\/avatar.jpg'"/>    </div>
-  </div>
+  <span>@</span>
   
 
   <span itemprop="author" itemscope itemtype="https://schema.org/Person">
   
     
-      <span itemprop="name">xieStr</span>
+      <span itemprop="name">Author Name</span>
     
   
   </span>
@@ -343,7 +306,7 @@
 
       <div class="flex items-center">
         <ion-icon name="time" class="mr-1"></ion-icon>
-        <span>8分钟阅读</span>
+        <span>1分钟阅读</span>
       </div>
     </div>
   </div>
@@ -529,6 +492,8 @@
 
     
 
+    
+    <script src="/js/custom.js"></script>
     
 
     

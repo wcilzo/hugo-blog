@@ -101,6 +101,8 @@
 
 
     
+    <link rel="stylesheet" href="/css/custom.css" />
+    
 
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3/dist/cdn.min.js" integrity="sha256-PtHu0lJIiSHfZeNj1nFd6wTX+Squ255SGZ/fc8seCtM=" crossorigin="anonymous"></script>
   </head>
@@ -112,7 +114,10 @@
     <div id="dream-global-bg"></div>
 
     
-<nav class="mt-4 lg:mt-8 py-4">
+<nav x-data="{ isSticky: false }"
+  x-init="window.addEventListener('scroll', () => { isSticky = window.scrollY > 30 })"
+  class="sticky top-0 z-30 mt-4 lg:mt-8 py-4"
+  :class="{ 'bg-base-100 shadow-lg dark:border-b dark:border-base-content/30': isSticky }">
 
   
   <div class="container flex justify-between px-4">
@@ -138,6 +143,8 @@
 
     
     
+      
+    
 
     <div class="dropdown dropdown-end sm:hidden">
       <div tabindex="0" role="button" class="btn btn-ghost btn-square" aria-label="Select an option">
@@ -145,21 +152,6 @@
       </div>
       <ul tabindex="0" class="dropdown-content menu w-36 bg-base-100 rounded-box z-1 shadow-md">
         
-
-
-
-
-
-
-
-<li>
-  <div role="link" tabindex="0" class="inline-flex items-center p-2 cursor-pointer" @click="flip = !flip" title="关于">
-    <ion-icon name="information-circle"></ion-icon>关于</div>
-</li>
-
-
-
-
 
 
 
@@ -216,18 +208,6 @@
     </div>
     <section class="hidden sm:flex sm:items-center sm:gap-2 md:gap-4">
       
-
-      
-      
-
-
-
-
-<div role="link" tabindex="0" class="text-sm font-semibold cursor-pointer hover:underline" @click="flip = !flip" title="关于">关于</div>
-
-
-
-
 
       
       
@@ -695,15 +675,60 @@ index 的初始值 为 -1，index ++ 使得首次调用 index 为正常值 0
       </section>
 
       
+      <div class="divider"></div>
+      <div class="flex flex-col md:flex-row justify-between gap-4 py-4">
+        
+        <a role="button" class="btn btn-outline h-12" href="/posts/goweb6/" title="Gee微框架学习记录(第六、七天)">
+          <ion-icon name="chevron-back"></ion-icon>
+          <div class="inline-flex flex-col items-start">
+            <span class="text-base-content/60 text-xs font-normal">上一页</span>
+            <span class="max-w-48 truncate">Gee微框架学习记录(第六、七天)</span>
+          </div>
+        </a>
+        
+
+        
+        <a role="button" class="btn btn-outline h-12" href="/posts/goweb4/" title="Gee微框架学习记录(第四天)">
+          <div class="inline-flex flex-col items-end">
+            <span class="text-base-content/60 text-xs font-normal">下一页</span>
+            <span class="max-w-48 truncate">Gee微框架学习记录(第四天)</span>
+          </div>
+          <ion-icon name="chevron-forward"></ion-icon>
+        </a>
+        
+      </div>
+      
 
       
     </article>
   </div>
 
-  <div class="hidden lg:flex lg:flex-col lg:items-end">
+  <div class="hidden lg:flex lg:flex-col lg:items-start">
+    
+    <nav class="text-lg" id="TableOfContents" style="margin-top: 200px">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#gee框架实现">Gee框架实现</a>
+          <ul>
+            <li><a href="#gee中间件定义">Gee中间件定义</a></li>
+            <li><a href="#gee中间件参数处理和链调用">Gee中间件参数处理和链调用</a></li>
+          </ul>
+        </li>
+        <li><a href="#gee中间件调用">Gee中间件调用</a>
+          <ul>
+            <li><a href="#gee中间件使用">Gee中间件使用</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+    </nav>
     
   </div>
-</div>
 
 
             
@@ -894,6 +919,8 @@ index 的初始值 为 -1，index ++ 使得首次调用 index 为正常值 0
 
     
 
+    
+    <script src="/js/custom.js"></script>
     
 
     

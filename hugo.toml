@@ -81,7 +81,7 @@ customSyntaxHighlighting = true
 
 [params.advanced]
   customCSS = ["css/custom.css"]
-# customJS = []
+  customJS = ["js/custom.js"]
 
 [params.experimental]
 # jsDate = true

@@ -14,7 +14,7 @@
   
 
 
-<link rel="canonical" href="http://localhost:1313/posts/mysql%E7%9A%84explain%E5%92%8C%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96/" />
+<link rel="canonical" href="//ind:1313/posts/mysql%E7%9A%84explain%E5%92%8C%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96/" />
 
 
 
@@ -30,7 +30,7 @@
 <meta name="generator" content="Hugo 0.145.0">
 
 
-<meta property="og:url" content="http://localhost:1313/posts/mysql%E7%9A%84explain%E5%92%8C%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96/">
+<meta property="og:url" content="//ind:1313/posts/mysql%E7%9A%84explain%E5%92%8C%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96/">
   <meta property="og:site_name" content="xiestr&#39;s blog">
   <meta property="og:title" content="MySQL的Explain和索引优化学习笔记">
   <meta property="og:description" content="Explain 工具 使用explain 或者 EXPLAIN关键字可以模拟优化器执行SQL语句。分析语句或者是结构的性能瓶颈。Explain分析并不会真的运行这一条语句，而是返回这条SQL语句的相关信息。包括索引、表、访问类型等。">
@@ -95,6 +95,8 @@
 
 
     
+    <link rel="stylesheet" href="/css/custom.css" />
+    
 
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3/dist/cdn.min.js" integrity="sha256-PtHu0lJIiSHfZeNj1nFd6wTX+Squ255SGZ/fc8seCtM=" crossorigin="anonymous"></script>
   </head>
@@ -106,7 +108,10 @@
     <div id="dream-global-bg"></div>
 
     
-<nav class="mt-4 lg:mt-8 py-4">
+<nav x-data="{ isSticky: false }"
+  x-init="window.addEventListener('scroll', () => { isSticky = window.scrollY > 30 })"
+  class="sticky top-0 z-30 mt-4 lg:mt-8 py-4"
+  :class="{ 'bg-base-100 shadow-lg dark:border-b dark:border-base-content/30': isSticky }">
 
   
   <div class="container flex justify-between px-4">
@@ -121,7 +126,7 @@
       
       <div>
         
-        <a href="http://localhost:1313/" class="text-lg font-semibold cursor-pointer">
+        <a href="//ind:1313/" class="text-lg font-semibold cursor-pointer">
           xiestr
         </a>
         
@@ -132,6 +137,8 @@
 
     
     
+      
+    
 
     <div class="dropdown dropdown-end sm:hidden">
       <div tabindex="0" role="button" class="btn btn-ghost btn-square" aria-label="Select an option">
@@ -139,21 +146,6 @@
       </div>
       <ul tabindex="0" class="dropdown-content menu w-36 bg-base-100 rounded-box z-1 shadow-md">
         
-
-
-
-
-
-
-
-<li>
-  <div role="link" tabindex="0" class="inline-flex items-center p-2 cursor-pointer" @click="flip = !flip" title="关于">
-    <ion-icon name="information-circle"></ion-icon>关于</div>
-</li>
-
-
-
-
 
 
 
@@ -210,18 +202,6 @@
     </div>
     <section class="hidden sm:flex sm:items-center sm:gap-2 md:gap-4">
       
-
-      
-      
-
-
-
-
-<div role="link" tabindex="0" class="text-sm font-semibold cursor-pointer hover:underline" @click="flip = !flip" title="关于">关于</div>
-
-
-
-
 
       
       
@@ -351,19 +331,19 @@
   
   
     <a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary"
-      href="https://x.com/intent/post?text=MySQL%e7%9a%84Explain%e5%92%8c%e7%b4%a2%e5%bc%95%e4%bc%98%e5%8c%96%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b0&amp;url=http://localhost:1313/posts/mysql%E7%9A%84explain%E5%92%8C%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96/" target="_blank" rel="noopener noreferrer"
+      href="https://x.com/intent/post?text=MySQL%e7%9a%84Explain%e5%92%8c%e7%b4%a2%e5%bc%95%e4%bc%98%e5%8c%96%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b0&amp;url=//ind:1313/posts/mysql%E7%9A%84explain%E5%92%8C%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96/" target="_blank" rel="noopener noreferrer"
       title="Share on X">
       <ion-icon class="group-hover:text-primary-content" name="logo-x"></ion-icon>
     </a>
   
     <a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary"
-      href="https://facebook.com/sharer/sharer.php?u=http://localhost:1313/posts/mysql%E7%9A%84explain%E5%92%8C%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96/" target="_blank" rel="noopener noreferrer"
+      href="https://facebook.com/sharer/sharer.php?u=//ind:1313/posts/mysql%E7%9A%84explain%E5%92%8C%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96/" target="_blank" rel="noopener noreferrer"
       title="Share on Facebook">
       <ion-icon class="group-hover:text-primary-content" name="logo-facebook"></ion-icon>
     </a>
   
     <a class="group inline-flex items-center p-2 rounded-full cursor-pointer hover:bg-primary"
-      href="https://wa.me/?text=MySQL%e7%9a%84Explain%e5%92%8c%e7%b4%a2%e5%bc%95%e4%bc%98%e5%8c%96%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b0%20http://localhost:1313/posts/mysql%E7%9A%84explain%E5%92%8C%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96/" target="_blank" rel="noopener noreferrer"
+      href="https://wa.me/?text=MySQL%e7%9a%84Explain%e5%92%8c%e7%b4%a2%e5%bc%95%e4%bc%98%e5%8c%96%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b0%20//ind:1313/posts/mysql%E7%9A%84explain%E5%92%8C%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96/" target="_blank" rel="noopener noreferrer"
       title="Share on WhatsApp">
       <ion-icon class="group-hover:text-primary-content" name="logo-whatsapp"></ion-icon>
     </a>
@@ -562,15 +542,55 @@
       </section>
 
       
+      <div class="divider"></div>
+      <div class="flex flex-col md:flex-row justify-between gap-4 py-4">
+        
+        <a role="button" class="btn btn-outline h-12" href="/posts/goweb1/" title="Gee微框架学习记录(第一天)">
+          <ion-icon name="chevron-back"></ion-icon>
+          <div class="inline-flex flex-col items-start">
+            <span class="text-base-content/60 text-xs font-normal">上一页</span>
+            <span class="max-w-48 truncate">Gee微框架学习记录(第一天)</span>
+          </div>
+        </a>
+        
+
+        
+        <a role="button" class="btn btn-outline h-12" href="/posts/mysql%E7%B4%A2%E5%BC%95/" title="MySQL索引(Innodb)">
+          <div class="inline-flex flex-col items-end">
+            <span class="text-base-content/60 text-xs font-normal">下一页</span>
+            <span class="max-w-48 truncate">MySQL索引(Innodb)</span>
+          </div>
+          <ion-icon name="chevron-forward"></ion-icon>
+        </a>
+        
+      </div>
+      
 
       
     </article>
   </div>
 
-  <div class="hidden lg:flex lg:flex-col lg:items-end">
+  <div class="hidden lg:flex lg:flex-col lg:items-start">
+    
+    <nav class="text-lg" id="TableOfContents" style="margin-top: 200px">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#explain-工具">Explain 工具</a>
+          <ul>
+            <li><a href="#explain解析的各个列">Explain解析的各个列</a></li>
+          </ul>
+        </li>
+        <li><a href="#索引最佳实践">索引最佳实践</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+    </nav>
     
   </div>
-</div>
 
 
             
@@ -761,6 +781,8 @@
 
     
 
+    
+    <script src="/js/custom.js"></script>
     
 
     
