@@ -2,73 +2,101 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>xiestr&#39;s blog</title>
-    <link>http://localhost:12157/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content on xiestr&#39;s blog</description>
     <generator>Hugo</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Sat, 12 Apr 2025 23:22:56 +0800</lastBuildDate>
-    <atom:link href="http://localhost:12157/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 24 Jun 2025 22:22:53 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CAS和Atomic以及简论线程安全</title>
+      <link>http://localhost:1313/posts/juccas/</link>
+      <pubDate>Tue, 24 Jun 2025 22:22:53 +0800</pubDate>
+      <guid>http://localhost:1313/posts/juccas/</guid>
+      <description>&lt;h3 id=&#34;cas&#34;&gt;CAS&lt;/h3&gt;&#xA;&lt;p&gt;CAS 全程 compare and swap，对比和交换。在了解CAS之前，得明白什么是原子操作。&lt;/p&gt;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;  &lt;blockquote class=&#34;dream-alert tip&#34;&gt;&#xD;&#xA;    &lt;p class=&#34;heading&#34;&gt;&#xD;&#xA;      &lt;ion-icon name=&#34;bulb-outline&#34;&gt;&lt;/ion-icon&gt;提示&lt;/p&gt;&#xD;&#xA;    &lt;p&gt;什么是原子操作？&lt;/p&gt;&#xA;&lt;p&gt;应该有相当一部分人说不清楚这个概念。原子性是数据库的四大特性，相信大家都不陌生。一个事务包含多个操作，要么全都做，要么全都不做。这就是原子性。原子操作也是同理的，如果说一个方法里面又有查询，插入又有修改，并且他们都被事务包裹，那么就满足了全部做或者不做。那么就称这个方法具有原子性。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>ThreadLocal以及他的内存泄露问题</title>
+      <link>http://localhost:1313/posts/jucthreadlocal/</link>
+      <pubDate>Sun, 22 Jun 2025 00:38:22 +0800</pubDate>
+      <guid>http://localhost:1313/posts/jucthreadlocal/</guid>
+      <description>&lt;h3 id=&#34;为什么需要threadlocal&#34;&gt;为什么需要ThreadLocal？&lt;/h3&gt;&#xA;&lt;p&gt;在早期还在使用JDBC的时候。sql语句需要从数据库连接池拿出一个连接。通过这个连接结合代码中编写的sql语句对数据库数据进行操作。&lt;/p&gt;&#xA;&lt;p&gt;有时候我们的业务需要操作多个数据库表，为了错误恢复，引入了事务。但是JDBC中每个sql操作都开启了一个事务，这就导致业务逻辑执行的sql如果有错误并不能正确处理。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>深入理解并发、线程、与登台通知机制学习笔记</title>
+      <link>http://localhost:1313/posts/jucthread/</link>
+      <pubDate>Sat, 14 Jun 2025 23:50:37 +0800</pubDate>
+      <guid>http://localhost:1313/posts/jucthread/</guid>
+      <description>&lt;h3 id=&#34;深入理解并发线程与登台通知机制学习笔记&#34;&gt;深入理解并发、线程、与登台通知机制学习笔记&lt;/h3&gt;&#xA;&lt;p&gt;进程： 在操作系统角度，进程是程序运行资源分配(以内存为主)的最小单位。&lt;/p&gt;&#xA;&lt;p&gt;线程：线程是CPU调度的最小单位。计算机中有很多的程序。但是CPU核心数量是有限的。计算机通过进程去运行程序。但是有限的进程数不足以驱动大量的程序运行。于是就有线程。线程是依赖于进程存在。是CPU调度和分配资源的基本单位。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>JVM(cacheModel)</title>
+      <link>http://localhost:1313/posts/jvmcachemodel/</link>
+      <pubDate>Sat, 14 Jun 2025 14:15:11 +0800</pubDate>
+      <guid>http://localhost:1313/posts/jvmcachemodel/</guid>
+      <description>&lt;p&gt;C&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Java类加载机制笔记</title>
+      <link>http://localhost:1313/posts/jvmclassloader/</link>
+      <pubDate>Sat, 24 May 2025 14:21:12 +0800</pubDate>
+      <guid>http://localhost:1313/posts/jvmclassloader/</guid>
+      <description>&lt;h3 id=&#34;java类加载运行过程&#34;&gt;Java类加载运行过程&lt;/h3&gt;&#xA;&lt;p&gt;当我们需要启动某个自己编写的类的时候，要编写非常经典的public static void main方法块。整个文件或者项目通过该main方法编译运行。那么是类是如何加载进内存的呢？&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Gee微框架学习记录(第六、七天)</title>
-      <link>http://localhost:12157/posts/goweb6/</link>
+      <link>http://localhost:1313/posts/goweb6/</link>
       <pubDate>Sat, 12 Apr 2025 23:22:56 +0800</pubDate>
-      <guid>http://localhost:12157/posts/goweb6/</guid>
+      <guid>http://localhost:1313/posts/goweb6/</guid>
       <description>&lt;p&gt;对7天系列中Gee框架学习的记录。推荐和Gee第六、第七天一起食用。&lt;/p&gt;&#xA;&lt;p&gt;接下来的内容不多，所以将Gee系列第六、第七天的内容放在一起。&lt;/p&gt;&#xA;&lt;p&gt;第六天是模板HTML Template，这一节我认为相对来说不那么重要。因为现在已经有Next, Nuxt这些比较成熟的SSR前端渲染框架了。但是对于一个基本的网络框架来说，这一点还是必不可少的。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Gee微框架学习记录(第五天)</title>
-      <link>http://localhost:12157/posts/goweb5/</link>
+      <link>http://localhost:1313/posts/goweb5/</link>
       <pubDate>Thu, 10 Apr 2025 21:25:08 +0800</pubDate>
-      <guid>http://localhost:12157/posts/goweb5/</guid>
+      <guid>http://localhost:1313/posts/goweb5/</guid>
       <description>&lt;p&gt;对7天系列中Gee框架学习的记录。推荐和Gee第五天一起食用。&lt;/p&gt;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;  &lt;blockquote class=&#34;dream-alert note&#34;&gt;&#xD;&#xA;    &lt;p class=&#34;heading&#34;&gt;&#xD;&#xA;      &lt;ion-icon name=&#34;information-circle-outline&#34;&gt;&lt;/ion-icon&gt;注意&lt;/p&gt;&#xD;&#xA;    &lt;p&gt;对于初学者来说，可能会曲解这一节的中间件的意思。可能会认为是Redis、MQ等中间件。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Gee微框架学习记录(第四天)</title>
-      <link>http://localhost:12157/posts/goweb4/</link>
+      <link>http://localhost:1313/posts/goweb4/</link>
       <pubDate>Mon, 07 Apr 2025 10:50:30 +0800</pubDate>
-      <guid>http://localhost:12157/posts/goweb4/</guid>
+      <guid>http://localhost:1313/posts/goweb4/</guid>
       <description>&lt;p&gt;对7天系列中Gee框架学习的记录。推荐和Gee第四天一起食用。&lt;/p&gt;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;  &lt;blockquote class=&#34;dream-alert note&#34;&gt;&#xD;&#xA;    &lt;p class=&#34;heading&#34;&gt;&#xD;&#xA;      &lt;ion-icon name=&#34;information-circle-outline&#34;&gt;&lt;/ion-icon&gt;注意&lt;/p&gt;&#xD;&#xA;    &lt;p&gt;前面完成了动态路由的相关配置，Gee第四天主要讨论分组路由实现，第五天的中间件处理需要用到，所以这一节要理解。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Gee微框架学习记录(第三天)</title>
-      <link>http://localhost:12157/posts/goweb3/</link>
+      <link>http://localhost:1313/posts/goweb3/</link>
       <pubDate>Fri, 04 Apr 2025 14:03:16 +0800</pubDate>
-      <guid>http://localhost:12157/posts/goweb3/</guid>
+      <guid>http://localhost:1313/posts/goweb3/</guid>
       <description>&lt;p&gt;对7天系列中Gee框架学习的记录。推荐和Gee第三天一起食用。&lt;/p&gt;&#xA;&lt;p&gt;第三天前缀树路由是Gee框架的重难点。&lt;/p&gt;&#xA;&lt;p&gt;主要内容为&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;使用Trie树实现动态路由(dynamic route)解析&lt;/p&gt;</description>
     </item>
     <item>
       <title>Gee微框架学习记录(第二天)</title>
-      <link>http://localhost:12157/posts/goweb2/</link>
+      <link>http://localhost:1313/posts/goweb2/</link>
       <pubDate>Sun, 30 Mar 2025 16:31:18 +0800</pubDate>
-      <guid>http://localhost:12157/posts/goweb2/</guid>
+      <guid>http://localhost:1313/posts/goweb2/</guid>
       <description>&lt;p&gt;对7天系列中Gee框架学习的记录。推荐和Gee第二天一起食用。&lt;/p&gt;&#xA;&lt;p&gt;Context部分主要实现两个目标&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;将&lt;code&gt;路由(router)&lt;/code&gt;独立出来，方便之后增强。&lt;/li&gt;&#xA;&lt;li&gt;设计&lt;code&gt;上下文(Context)&lt;/code&gt;，封装 Request 和 Response ，提供对 JSON、HTML 等返回类型的支持。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;为什么要使用(设计)Context ?&lt;/p&gt;</description>
     </item>
     <item>
       <title>Gee微框架学习记录(第一天)</title>
-      <link>http://localhost:12157/posts/goweb1/</link>
+      <link>http://localhost:1313/posts/goweb1/</link>
       <pubDate>Sun, 30 Mar 2025 14:21:12 +0800</pubDate>
-      <guid>http://localhost:12157/posts/goweb1/</guid>
+      <guid>http://localhost:1313/posts/goweb1/</guid>
       <description>&lt;p&gt;对7天系列中Gee框架学习的记录。推荐和Gee第一天一起食用。&lt;/p&gt;&#xA;&lt;p&gt;Gee框架参考了Go的Web框架&lt;code&gt;Gin&lt;/code&gt;实现。&lt;/p&gt;&#xA;&lt;p&gt;主要为：&lt;/p&gt;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;  &lt;blockquote&gt;&#xD;&#xA;    &lt;p&gt;1、基本请求接口 Handler&lt;/p&gt;&#xA;&lt;p&gt;2、上下文 Context (重要)&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Java类加载机制笔记</title>
-      <link>http://localhost:12157/posts/jvmclassloader/</link>
-      <pubDate>Sun, 30 Mar 2025 14:21:12 +0800</pubDate>
-      <guid>http://localhost:12157/posts/jvmclassloader/</guid>
-      <description>&lt;h3 id=&#34;java类加载运行过程&#34;&gt;Java类加载运行过程&lt;/h3&gt;&#xA;&lt;p&gt;当我们需要启动某个自己编写的类的时候，要编写非常经典的public static void main方法块。整个文件或者项目通过该main方法编译运行。那么是类是如何加载进内存的呢？&lt;/p&gt;</description>
-    </item>
-    <item>
       <title>MySQL的Explain和索引优化学习笔记</title>
-      <link>http://localhost:12157/posts/mysql%E7%9A%84explain%E5%92%8C%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96/</link>
+      <link>http://localhost:1313/posts/mysql%E7%9A%84explain%E5%92%8C%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96/</link>
       <pubDate>Tue, 11 Mar 2025 20:00:52 +0800</pubDate>
-      <guid>http://localhost:12157/posts/mysql%E7%9A%84explain%E5%92%8C%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96/</guid>
+      <guid>http://localhost:1313/posts/mysql%E7%9A%84explain%E5%92%8C%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96/</guid>
       <description>&lt;h3 id=&#34;explain-工具&#34;&gt;Explain 工具&lt;/h3&gt;&#xA;&lt;p&gt;使用&lt;code&gt;explain&lt;/code&gt; 或者 &lt;code&gt;EXPLAIN&lt;/code&gt;关键字可以模拟优化器执行SQL语句。分析语句或者是结构的性能瓶颈。Explain分析并不会真的运行这一条语句，而是返回这条SQL语句的相关信息。包括索引、表、访问类型等。&lt;/p&gt;</description>
     </item>
     <item>
       <title>MySQL索引(Innodb)</title>
-      <link>http://localhost:12157/posts/mysql%E7%B4%A2%E5%BC%95/</link>
+      <link>http://localhost:1313/posts/mysql%E7%B4%A2%E5%BC%95/</link>
       <pubDate>Mon, 03 Mar 2025 21:49:34 +0800</pubDate>
-      <guid>http://localhost:12157/posts/mysql%E7%B4%A2%E5%BC%95/</guid>
+      <guid>http://localhost:1313/posts/mysql%E7%B4%A2%E5%BC%95/</guid>
       <description>&lt;p&gt;千万级数据表如何用B+树索引快速查找?&lt;/p&gt;&#xA;&lt;p&gt;使用基于B+树的索引进行查找。&lt;/p&gt;&#xA;&lt;h2 id=&#34;索引&#34;&gt;索引&lt;/h2&gt;&#xA;&lt;p&gt;索引是一种&lt;code&gt;数据结构&lt;/code&gt;。&lt;/p&gt;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;  &lt;blockquote&gt;&#xD;&#xA;    &lt;p&gt;索引是帮助MySQL高效获取数据的&lt;code&gt;排好序&lt;/code&gt;的&lt;code&gt;数据结构&lt;/code&gt;&lt;/p&gt;&#xD;&#xA;  &lt;/blockquote&gt;&#xD;&#xA;&#xD;&#xA;&lt;h3 id=&#34;为什么需要引入索引这种数据结构&#34;&gt;为什么需要引入索引这种数据结构？&lt;/h3&gt;&#xA;&lt;p&gt;在计算机中，磁盘文件存储是随机存储的，而不是顺序存储。当需要查询某特定数据时，如果是随机存储，那么就得全盘扫描找到这个文件。这花费的时间是巨大的。因此MySQL引入了索引这种数据结构。&lt;/p&gt;</description>
     </item>
   </channel>
