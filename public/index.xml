@@ -30,13 +30,6 @@
       <description>&lt;h3 id=&#34;深入理解并发线程与登台通知机制学习笔记&#34;&gt;深入理解并发、线程、与登台通知机制学习笔记&lt;/h3&gt;&#xA;&lt;p&gt;进程： 在操作系统角度，进程是程序运行资源分配(以内存为主)的最小单位。&lt;/p&gt;&#xA;&lt;p&gt;线程：线程是CPU调度的最小单位。计算机中有很多的程序。但是CPU核心数量是有限的。计算机通过进程去运行程序。但是有限的进程数不足以驱动大量的程序运行。于是就有线程。线程是依赖于进程存在。是CPU调度和分配资源的基本单位。&lt;/p&gt;</description>
     </item>
     <item>
-      <title>JVM(cacheModel)</title>
-      <link>http://localhost:1313/posts/jvmcachemodel/</link>
-      <pubDate>Sat, 14 Jun 2025 14:15:11 +0800</pubDate>
-      <guid>http://localhost:1313/posts/jvmcachemodel/</guid>
-      <description>&lt;p&gt;C&lt;/p&gt;</description>
-    </item>
-    <item>
       <title>Java类加载机制笔记</title>
       <link>http://localhost:1313/posts/jvmclassloader/</link>
       <pubDate>Sat, 24 May 2025 14:21:12 +0800</pubDate>
@@ -84,13 +77,6 @@
       <pubDate>Sun, 30 Mar 2025 14:21:12 +0800</pubDate>
       <guid>http://localhost:1313/posts/goweb1/</guid>
       <description>&lt;p&gt;对7天系列中Gee框架学习的记录。推荐和Gee第一天一起食用。&lt;/p&gt;&#xA;&lt;p&gt;Gee框架参考了Go的Web框架&lt;code&gt;Gin&lt;/code&gt;实现。&lt;/p&gt;&#xA;&lt;p&gt;主要为：&lt;/p&gt;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;  &lt;blockquote&gt;&#xD;&#xA;    &lt;p&gt;1、基本请求接口 Handler&lt;/p&gt;&#xA;&lt;p&gt;2、上下文 Context (重要)&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>MySQL的Explain和索引优化学习笔记</title>
-      <link>http://localhost:1313/posts/mysql%E7%9A%84explain%E5%92%8C%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96/</link>
-      <pubDate>Tue, 11 Mar 2025 20:00:52 +0800</pubDate>
-      <guid>http://localhost:1313/posts/mysql%E7%9A%84explain%E5%92%8C%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96/</guid>
-      <description>&lt;h3 id=&#34;explain-工具&#34;&gt;Explain 工具&lt;/h3&gt;&#xA;&lt;p&gt;使用&lt;code&gt;explain&lt;/code&gt; 或者 &lt;code&gt;EXPLAIN&lt;/code&gt;关键字可以模拟优化器执行SQL语句。分析语句或者是结构的性能瓶颈。Explain分析并不会真的运行这一条语句，而是返回这条SQL语句的相关信息。包括索引、表、访问类型等。&lt;/p&gt;</description>
     </item>
     <item>
       <title>MySQL索引(Innodb)</title>
