@@ -71,12 +71,251 @@ CAS一般只能修改一个变量，在上面的介绍中。了解到CAS只能�
 
 ### Automic
 
-
-
-
-
-
-
-
+后续添加...
 
 ### 线程安全相关
+
+什么是线程安全？我们所写的代码在并发情况下，总是能够表现出正确的行为。反过来，未实现线程安全的代码，表现的行为是不确定的，有可能正确也有可能错误。
+
+如果要实现线程安全，就要保证我们的类是线程安全的。
+
+> [!tip] 
+>
+> Java并发编程中定义类是线程安全的如下：
+>
+> 当多个线程访问某个类的时候，不关运行时环境采用何种调度方式或者线程将如何交替执行，并且在调用代码中不需要任何额外的同步或者协同，这个类都能表现出正确的行为，那么称这个类是线程安全的。
+
+#### 如何实现线程安全呢？
+
+##### 线程封闭
+
+实现好的并发是一件困难的事情。我们通常都很害怕麻烦，通常都会想躲避掉这些麻烦(并发)，如何躲避呢？线程封闭是一种简单的方式，如果有一个对象只能被一个线程访问，即使他是线程不安全的，那么也没关系，因为别的线程不能访问，只有这个线程才能访问。这样所有改变的操作只能他来做，那么就不会出现任何问题了。
+
+###### 栈封闭
+
+栈封闭是编程中遇到最多的线程封闭，什么是栈封闭呢？
+
+我们知道在方法在运行时，局部变量会被压入栈中。而JVM在编译运行时每个线程有自己的线程栈。线程栈中同样保存着局部变量。当多个线程访问同一个方法时，此方法的局部变量都会被拷贝一份到线程栈中。所以局部变量不被多个线程所共享，因此就不会出现线程安全问题。所以能用局部变量就不要用全局变量，全局变量容易出现并发问题。
+
+###### ThreadLocal
+
+每个线程有自己的ThreadLocal存放着变量副本，各个线程有独立的变量副本，在各自修改的时候改的也是自己的变量副本。因此也不会出现线程安全问题。
+
+##### 无状态的类
+
+什么是无状态的类？就是没有任何成员变量的类。这种类一定是线程安全的。只有方法中的局部变量，而上面也说了局部变量属于栈封闭。因此是线程安全的。如果说类的方法参数中使用了对象，也是线程安全的吗？
+
+这个类依然是线程安全的。即使不安全的是这个对象。因为这个类没有直接持有这个不安全的对象实例，类自身不会有任何问题，有问题的是这个对象，不能说这个类不是线程安全的。
+
+##### 类不可变
+
+final关键字让状态不可变。对于一个类，所有的成员变量应该是私有的，并且允许的话，应该都加上final关键字，但是加上final意味着这个成员变量如果是一个对象，这个对象所对应的类也是不可变的。才能保证这个类是不可变的。
+
+> [!warning]
+>
+> 一旦类的成员变量中有对象，final关键字保证不可变并不能保证类的安全性，因为在多线程下，虽然对象引用不可变，但是在堆上的实例还是有可能被多个线程同时修改的，没有正确处理的情况下，对象实例在堆中的数据是不可预知的。
+
+##### 加锁和CAS
+
+最容易想到的方式就是加锁了。synchronized关键字或者各种原子变量的CAS机制、显示锁等。
+
+#### 死锁
+
+死锁是指两个或者两个以上线程争夺资源导致彼此通信停滞阻塞的现象。如果没有外力干扰，他们就无法推进，这时称系统处于死锁状态或者产生了死锁。
+
+死锁是避让发生在多操作者(m≥2)争夺多个资源(n≥2)。且(n≤m)。单资源不会发生死锁。多资源单操作者也不会发生死锁。另外资源的顺序也很重要。如果说争夺资源顺序是一样的也不会发生死锁。
+
+> [!note]
+>
+> 在操作系统中的定义
+>
+> 死锁发生必须具备的四个条件
+>
+> 1) 互斥条件：指进程对所分配的资源进行排他性使用。即在一段时间内某资源只由一个进程占用。如果此时还有其他进程请求资源，则请求者只能等待，直至占有资源的进程释放。
+> 2) 请求和保持条件: 指进程已经保持了至少一个资源，但又提出了新的资源请求，而该资源已被其他进程占用，此时请求进程阻塞，但又对自己已经获得的其他资源保持不放。
+> 3) 不剥夺条件：指进程已获得的资源，在未使用完之前不能被剥夺，只能在用完后由自己释放。
+> 4) 环路等待条件：指在发生死锁时，必然存在一个进程--资源的循环链，即进程集合{P0,P1,P2...Pn}中的P0正在等待一个P1占用的资源，P1正在等待一个P2占用的资源，.....，Pn正则等待已被P0占用的资源。
+
+只要破坏四个必要条件之一就能打破死锁。这也是预防死锁发生需要打破的四个条件。
+
+> [!tip]
+>
+> - 打破互斥条件: 改造独占性资源为虚拟资源，大部分资源已经无法改造。
+> - 打破申请和占有条件: 在使用资源时，一次性申请所有资源，如果无法全部申请，那么放弃，等待至能够申请全部资源运行。
+> - 打破不可抢占条件：当进程占有一独占性资源后又申请一独占性资源而无法满足，则释放原来占有的资源。
+> - 打破循环等待条件：采用资源有序分配策略，所有进程只能按顺序申请资源。
+
+##### 现象、危害和解决
+
+数据库中多个事务要同时操作同一个表的情况。所以数据库在设计之初就考虑到了检查死锁和从死锁中恢复的机制。Java中怎么检测呢？
+
+###### 现象
+
+需要记住
+
+- 简单顺序死锁
+
+```java
+public class NormalDeadLock {
+
+    // 第一个锁
+    private static Object block1 = new Object();
+    // 第二个锁
+    private static Object block2 = new Object();
+
+    // 第一个拿锁的方法
+    private static void do1() throws InterruptedException {
+        String threadName = Thread.currentThread().getName();
+        synchronized (block1) {
+            System.out.println(threadName + " get block1");
+            Thread.sleep(100);
+            synchronized (block2) {
+                System.out.println(threadName + " get block2");
+            }
+        }
+    }
+
+    // 第二个拿锁方法
+    private static void do2() throws InterruptedException {
+        String threadName = Thread.currentThread().getName();
+        synchronized (block2) {
+            System.out.println(threadName + " get block2");
+            Thread.sleep(100);
+            synchronized (block1) {
+                System.out.println(threadName + " get block1");
+            }
+        }
+    }
+
+    // 子线程, 代表第一个拿锁的操作者
+    private static class ThreadOperator extends Thread {
+
+        private String name;
+
+        public ThreadOperator(String name) {
+            this.name = name;
+        }
+
+        @Override
+        public void run() {
+            Thread.currentThread().setName(name);
+            try {
+                do1();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        // 主线程，代表第二个操作者
+        Thread.currentThread().setName("operator 2");
+        ThreadOperator threadOperator = new ThreadOperator("operator 1");
+        threadOperator.start();
+        do2();
+    }
+}
+
+```
+
+这里do1和do2中sleep(100)防止某个线程一次性争抢到2把锁跳过死锁条件。
+
+- 动态顺序死锁
+
+实际上也就是跟获取锁的顺序有关。但是有时候开发者可能无法察觉。
+
+```java
+public class DyDeadLock {
+
+    // 第一个锁
+    private static Object lock1 = new Object();
+    // 第二个锁
+    private static Object lock2 = new Object();
+
+    // 公共业务方法
+    private static void bussinessDo(Object first, Object second) throws InterruptedException {
+        String threadName = Thread.currentThread().getName();
+        synchronized (first) {
+            System.out.println(threadName + " get first");
+            Thread.sleep(100);
+            synchronized (second) {
+                System.out.println(threadName + " get second");
+            }
+        }
+    }
+
+    // 子线程，代表第一个操作者
+    private static class ThreadOperator extends Thread {
+
+        private String name;
+
+        public ThreadOperator(String name) {
+            this.name = name;
+        }
+
+        @Override
+        public void run() {
+            Thread.currentThread().setName(name);
+            try {
+                bussinessDo(lock1, lock2);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static void main(String[] args) throws  InterruptedException{
+        // 主线程，代表第二个操作者
+        Thread.currentThread().setName("operator 1");
+        ThreadOperator operator = new ThreadOperator("operator 2");
+        operator.start();
+        bussinessDo(lock2, lock1);
+    }
+}
+
+```
+
+###### 危害
+
+1、线程不工作了，但是程序还在运行。
+
+2、没有任何异常可以知道发生了什么情况。
+
+3、一旦程序发生了死锁，没有任何办法恢复。只能重启程序，对于生产环境中，这是一个很严重的问题。
+
+实际工作中的死锁:
+
+>时间不定，不是每次出现，一旦出现没有任何异常信息，只知道这个应用的所有业务越来越慢，最后停止服务。无法确定时那个具体业务导致的问题，测试部门无法复现，并发量不够。
+
+解决：
+
+定位死锁问题：
+
+通过jps查询应用的id，再通过jstack id 查看应用的锁的持有情况。
+
+![image-20250629170430507](./images/image-20250629170430507.png)
+
+![image-20250629170453223](./images/image-20250629170453223.png)
+
+![image-20250629170531416](./images/image-20250629170531416.png)
+
+###### 修正
+
+保证拿锁顺序一致
+
+两种解决方式
+
+- 内部顺序比较，确定拿锁的顺序。
+- 采用尝试拿锁的的机制。tryLock()。如果一次性能拿到全部锁才运行，否则等待。
+
+#### 其他安全问题
+
+##### 活锁
+
+两个线程在尝试拿锁的机制中，发生多个线程互相谦让，导致不断发生一个线程拿到同一把锁，再尝试拿另外一把锁拿不到，将原来的锁释放的过程。导致这段时间线程啥也没干。
+
+解决方法： 每个线程设置休眠随机数，错开拿锁时间。
+
+##### 线程饥饿
+
+低优先级的线程，总是拿不到执行时间。
